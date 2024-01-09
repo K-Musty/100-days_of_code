@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 a = input("a:")
 b = input("b:")
-a = temp
-b = a
-temp = b
+
+temp = a
+a = b
+b = temp
 
 print("a = " + a)
 print("b = " + b)
