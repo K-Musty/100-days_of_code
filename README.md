@@ -1,2 +1,2 @@
-# 100-of codes challenge by my humble self
+# 100-days of codes challenge
 This is to help build consistency with coding in python 🐍 
