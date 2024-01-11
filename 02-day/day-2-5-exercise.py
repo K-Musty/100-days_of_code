@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 print("Welcome to Love Calculator!")
 
-name1 = input("What is your name? \n")
-name2 = input("What is thier name? \n")
+input_name1 = input("What is your name? \n")
+input_name2 = input("What is thier name? \n")
 
-lower_name1 = name1.lower()
-lower_name2 = name2.lower()
+name1 = input_name1.lower()
+name2 = input_name2.lower()
 
-print(lower_name1.count("a"))
+name1_true = name1.count("t") + name1.count("r") + name1.count("u") + name1.count("e")
+name2_love = name2.count("l") + name2.count("o") + name2.count("v") + name2.count("e")
+
+print(str(name1_true) + str(name2_love) + "%")
 
 
