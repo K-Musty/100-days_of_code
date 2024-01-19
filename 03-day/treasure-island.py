@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 print("Welcome To Treasurre Island!")
 print('''
-         ____________________________________________________________________
+
+  ____________________________________________________________________
  / \-----     ---------  -----------     -------------- ------    ----\
  \_/__________________________________________________________________/
  |~ ~~ ~~~ ~ ~ ~~~ ~ _____.----------._ ~~~  ~~~~ ~~   ~~  ~~~~~ ~~~~|
@@ -26,13 +27,21 @@ print('''
  |____~jrei~__~_______~~_~____~~_____~~___~_~~___~\_|_/ ~_____~___~__|
  / \----- ----- ------------  ------- ----- -------  --------  -------\
  \_/__________________________________________________________________/
- '')
-
-
-
-print('''Congratulations You have won!!!
-
-
+ 
+ ''')
+new_way = input("Which way do you follow? left or right ").lower()
+if new_way == "left":
+    print("Game Over, Please try again")
+elif new_way == "right":
+    print("You're at a lake, would you swim, or wait for boat?")
+    new_lake = input("swim or wait").lower()
+    if new_lake == "swim":
+        print("Game Over, Please try again")
+    elif new_lake == "wait":
+        print("What a lake, you're now at the stop")
+        door = input("choose a door, red, yellow or blue? ").lower()
+        if new_door == blue:
+            print('You have won' + '''
 *******************************************************************************
           |                   |                  |                     |
  _________|________________.=""_;=.______________|_____________________|_______
@@ -54,4 +63,11 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 /______/______/______/______/______/______/______/______/______/______/[TomekK]
 *******************************************************************************
 ''')
+        else:
+            print("Game Over, please try again")
 
+    else:
+        print("Game Over, Pleae try again")
+
+else:
+    print("Game Over, Please try again")
