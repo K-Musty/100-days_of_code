@@ -34,12 +34,12 @@ if new_way == "left":
     print("Game Over, Please try again")
 elif new_way == "right":
     print("You're at a lake, would you swim, or wait for boat?")
-    new_lake = input("swim or wait").lower()
+    new_lake = input("swim or wait ").lower()
     if new_lake == "swim":
         print("Game Over, Please try again")
     elif new_lake == "wait":
         print("What a lake, you're now at the stop")
-        door = input("choose a door, red, yellow or blue? ").lower()
+        new_door = input("choose a door, red, yellow or blue? ").lower()
         if new_door == blue:
             print('You have won' + '''
 *******************************************************************************
