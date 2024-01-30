@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import random
 print("Rock, Paper and Scissors Game!!!")
 
 rock = """
@@ -33,7 +34,7 @@ rps_choice = [rock, paper, scissors]
 player_input = input("Choose 0 for rock, 1 for paper and 2 for scissors ")
 
 player_choice = int(player_input)
-
+computer_choice = random.randint(0,2)
 if player_choice == 0:
     print(rock)
     if
