@@ -63,8 +63,8 @@ elif player_choice == 1 and computer_choice == 1:
 elif player_choice == 1 and computer_choice == 2:
     print("Computer wins, please try Again")
 elif player_choice == 2 and computer_choice == 0:
-    ("Computer wins, Please play Again!!")
+    print("Computer wins, Please play Again!!")
 elif player_choice == 2 and computer_choice == 1:
-    ("You Win, Hoooray!!")
+    print("You Win, Hoooray!!")
 elif player_choice == 2 and computer_choice == 2:
     print("This is a draw, Please try again")
