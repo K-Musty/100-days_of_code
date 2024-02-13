@@ -4,11 +4,10 @@
 Day 8
 Challenge: Hang-Man
 '''
-print(logo)
 import random
 from stages import stages
 from Hangmanwords_logo import logo, word_list
-
+print(logo)
 chosen_word = random.choice(word_list)
 #Testing code
 print(f'psst, the soluton is {chosen_word}.')
