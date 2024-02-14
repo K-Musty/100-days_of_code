@@ -6,4 +6,12 @@ text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
 #Don't change the code above 👆
+def encrpyt (text_field, shift_field):
+    for letter in text_field:
+        position = aphabet.indes(letter)
+        new_position = position + shift_field
+        new_letter = alphabet[new_position]
+        print(new_letter)
+
+encrypt(textfield=text, shift_field=shift)
 
