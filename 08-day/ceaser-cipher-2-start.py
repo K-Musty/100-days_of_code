@@ -15,7 +15,16 @@ def encrypt (text_field, shift_field):
         cipher_text += new_letter
     print(cipher_text)
 
-encrypt(text_field=text, shift_field=shift)
-
 def decrypt(text_field, shift_field):
+    decipher_text = ""
+    for letter in text_filed:
+        position = alphabet.index(letter)
+        new_position = position - shift_field
+        decipher_text += alphabet[new_position]
+    print(decipher_text)
+
+if direction == "encrypt":
+    encrypt(text_field=text, shift_field=shift)
+elif direction == "decrypt":
+    decrypt(text_field=text, shift_field=shift)
 
