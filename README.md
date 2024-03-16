@@ -3,6 +3,6 @@
 ---------------------
 - Tutor: Dr. Angela Yu 
 ---------------------
-I don change small.
+Consistently
 
 I don add to the change 
