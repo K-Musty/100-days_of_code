@@ -8,7 +8,7 @@ I don add to the change
 seen
 #### &copy K-Musty
 
-it's actually discipline that determines success 
+it's actually discipline that determines success definitely 
 
 ----------------
 ##### More for more
