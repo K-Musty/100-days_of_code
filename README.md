@@ -3,14 +3,8 @@
 ---------------------
 - Tutor: Dr. Angela Yu 
 ---------------------
-Consistently
-I don add to the change 
-seen
 #### &copy K-Musty
 
-it's actually discipline that determines success definitely 
 
 ----------------
-##### More for more
 ------
-previewing 
