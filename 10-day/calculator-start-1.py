@@ -25,15 +25,21 @@ num1 = int(input("What's the first number?: "))
 
 for keys in operators:
     print(keys)
+should_continue = true
+while should_continue:
+    operation_symbol = input("Pick an operation ")
 
-operation_symbol = input("Pick an operation from the line above ")
+    num2 = int(input("What's the next number?: "))
+    calculations = operators[operation_symbol]
+    answer = calculations(num1, num2)
 
-num2 = int(input("What's the second number?: "))
-calculations = operators[operation_symbol]
-answer = calculations(num1, num2)
-
-print(f"{num1} {operation_symbol} {num2} = {answer}")
-
+    print(f"{num1} {operation_symbol} {num2} = {answer}")
+    ask_continue = input("Type 'y' to contine and 'n' to stop")
+    lower_cont = ask_continue.lower()
+    if lower_cont == "y":
+        should_continue = true
+    else:
+        should_continue = false
 '''
 if operation_symbol == "+":
     add(num1, num2)
