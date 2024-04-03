@@ -20,32 +20,30 @@ operators = {
         "*": multiply,
         "/": divide
 }
+def calculator():
+    num1 = int(input("What's the first number?: "))
+    for keys in operators:
+        print(keys)
+    should_continue = True
+    while should_continue:
+        operation_symbol = input("Pick an operation ")
 
-num1 = int(input("What's the first number?: "))
+        num2 = int(input("What's the next number?: "))
+        calculations = operators[operation_symbol]
+        answer = calculations(num1, num2)
 
-for keys in operators:
-    print(keys)
-should_continue = true
-while should_continue:
-    operation_symbol = input("Pick an operation ")
+        print(f"{num1} {operation_symbol} {num2} = {answer}")
+        ask_continue = input("Type 'y' to contine and 'n' to stop and 'r' to restart ")
+        lower_cont = ask_continue.lower()
+        if lower_cont == "y":
+            num1 = answer
+        elif lower_cont == "r":
+            calculator()
+        else:
+            should_continue = False
 
-    num2 = int(input("What's the next number?: "))
-    calculations = operators[operation_symbol]
-    first_answer = calculations(num1, num2)
+calculator()
 
-    print(f"{num1} {operation_symbol} {num2} = {first_answer}")
-
-    operation_symbol = input("Pick another operation")
-    num3 = int(input("Pick another number "))
-    calculations = operators[operation_symbol]
-    final_answer = calculation(first_answer, num3)
-
-    ask_continue = input("Type 'y' to contine and 'n' to stop")
-    lower_cont = ask_continue.lower()
-    if lower_cont == "y":
-        should_continue = true
-    else:
-        should_continue = false
 '''
 if operation_symbol == "+":
     add(num1, num2)
