@@ -31,9 +31,15 @@ while should_continue:
 
     num2 = int(input("What's the next number?: "))
     calculations = operators[operation_symbol]
-    answer = calculations(num1, num2)
+    first_answer = calculations(num1, num2)
 
-    print(f"{num1} {operation_symbol} {num2} = {answer}")
+    print(f"{num1} {operation_symbol} {num2} = {first_answer}")
+
+    operation_symbol = input("Pick another operation")
+    num3 = int(input("Pick another number "))
+    calculations = operators[operation_symbol]
+    final_answer = calculation(first_answer, num3)
+
     ask_continue = input("Type 'y' to contine and 'n' to stop")
     lower_cont = ask_continue.lower()
     if lower_cont == "y":
