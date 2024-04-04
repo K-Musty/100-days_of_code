@@ -7,6 +7,7 @@ def get_card():
     return card_taken
 user_card = []
 computer_card = []
+
 def begin_game():
     for n in range(0,2):
         user_card.append(get_card())
@@ -14,4 +15,14 @@ def begin_game():
     print(user_card)
     print(computer_card)
 
+    user_sum = sum(user_card)
+    print(user_sum)
+
+    computer_sum = sum(computer_card)
+    print(computer_sum)
+
+    if computer_sum == 21 and user_sum != 21:
+        print("computer wins")
+    elif computer_sum != 21 and user_sum == 21:
+        print("You win Hooray")
 begin_game()
