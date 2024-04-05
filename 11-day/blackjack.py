@@ -21,8 +21,19 @@ def begin_game():
     computer_sum = sum(computer_card)
     print(computer_sum)
 
+    
     if computer_sum == 21 and user_sum != 21:
         print("computer wins")
     elif computer_sum != 21 and user_sum == 21:
         print("You win Hooray")
+    elif computer_sum == 21 and user_sum == 21:
+        print("This game is a Draw, please try again")
+    elif computer_sum > 21 and user_sum > 21:
+        print("This game is a Draw, please try again")
+    elif computer_sum > 21 and user_sum < 21:
+        print("You win Hooray")
+    elif computer_sum < 21 and user_sum > 21:
+        print("You lose, computer wins")
+    
+
 begin_game()
