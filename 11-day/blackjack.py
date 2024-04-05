@@ -13,7 +13,7 @@ def begin_game():
         user_card.append(get_card())
         computer_card.append(get_card())
     print(user_card)
-    print(computer_card)
+    print(computer_card[0])
 
     user_sum = sum(user_card)
     print(user_sum)
