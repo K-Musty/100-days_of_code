@@ -9,7 +9,21 @@ user_card = []
 computer_card = []
 game_over = false
 
-
+def compare(user_score, computer_score):
+    if user_score == computer_score:
+        return "This game is a Draw"
+    elif computer_score == 0:
+        return "Lose, opponent has blackjack"
+    elif user_score == 0:
+        return "You Won the blackjack"
+    elif user_score > 21:
+        return "You went over you lose"
+    elif computer_score > 21:
+        return "Computer went over, you Win"
+    elif user_score > computer_score:
+        return "You win"
+    else:
+        return "You lose"
 def begin_game():
     for n in range(0,2):
         user_card.append(get_card())
