@@ -64,7 +64,10 @@ def begin_game():
         computer_card.append(get_card())
         computer_score = calculate_score(computer card)
 
+    print(compare(user_score, computer_score))
 
+    while input("Play Again: 'y', end 'n'") == "y":
+        begin_game()
     
 
 begin_game()
