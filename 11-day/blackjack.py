@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 #Back-Jack Game
+from art import logo
 import random
 def get_card():
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9,10, 10, 10, 10]
@@ -22,6 +23,7 @@ def compare(user_score, computer_score):
     else:
         return "You lose"
 def begin_game():
+    print(logo)
     user_card = []
     computer_card = []
     game_over = False
