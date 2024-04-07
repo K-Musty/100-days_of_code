@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#BackJack Game
+#Back-Jack Game
 import random
 def get_card():
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9,10, 10, 10, 10]
@@ -29,14 +29,8 @@ def begin_game():
     for n in range(0,2):
         user_card.append(get_card())
         computer_card.append(get_card())
-
-    def calculate_sum(cards):
-        total_sum = sum(cards)
-        return total_sum
     
     while not game_over:
-        user_sum = calculate_sum(user_card)
-        computer_sum = calculate_sum(computer_card)
 
         def calculate_score(cards):
             total_sum = sum(cards)
@@ -51,7 +45,7 @@ def begin_game():
         computer_score = calculate_score(computer_card)
 
         print(f"Youre cards are {user_card} and Score is {user_score} ")
-        print(f"Computer cards are {computer_card[0]} and Score is {computer_score} ")
+        print(f"Computer cards are {computer_card[0]}")
 
         if computer_score == 0 or user_score == 0 or user_score > 21:
             game_over = True
@@ -69,6 +63,5 @@ def begin_game():
 
     while input("Play Again: 'y', end 'n'") == "y":
         begin_game()
-    
 
 begin_game()
