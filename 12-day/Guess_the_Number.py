@@ -5,3 +5,5 @@ from art import logo
 import random
 
 print(logo)
+
+numbers = []
