@@ -6,26 +6,16 @@ import random
 
 print(logo)
 
-numbers = []
+answer = randint(1, 100)
 
-def get_number():
-    guessed_num = random.choice(numbers)
-    return guessed_num
-game_over = False
-def easy_mode():
-    lives = 10
-    while not game_over:
-        user_num = int(input("Select a number between 1 & 100"))
+def campare(guess, answer):
+    if guess > answer:
+        print("Too High")
+    elif guess < answer:
+        print("Too Low")
+    elif guess == answer:
+        print("Guess is Correct!!!")
 
-        for n in lives:
-            n -= lives
-            return lives
-def hard_mode():
-    lives = 4:
-        while not game_over:
-            for n in lives:
-                n -= lives
-                return lives
 
 def level_game():
     level = int(input("Select '1' for easy and '2' for hard"))
