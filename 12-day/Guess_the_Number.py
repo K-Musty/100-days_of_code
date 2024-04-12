@@ -30,13 +30,15 @@ def hard_mode():
             n -= tries
         game_over = true
         
+while not game_over():
+     def level_game():
+        level = int(input("Select '1' for easy and '2' for hard"))
+        if level == 1:
+            easy_mode()
+        elif level == 2:
+            hard_mode()
+        else:
+            print("Wrong choice: Try again !!")
 
- level_game():
-    level = int(input("Select '1' for easy and '2' for hard"))
-    if level == 1:
-        easy_mode()
-    elif level == 2:
-        hard_mode()
-    else:
-        print("Wrong choice: Try again !!")
+
 
