@@ -46,11 +46,11 @@ def begin_game():
                 print("Too Low")
             elif guess == answer:
                 print("Guess is Correct!!!")
-                game_over == True
+                game_over = True
             else:
                 print("invalid input!!!")
-                game_over == True
+                game_over = True
         compare(guess, answer)
         if guess == answer:
-            game_over == True
+            game_over = True
 begin_game()
