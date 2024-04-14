@@ -15,6 +15,7 @@ def hard_game():
         print(f"You have {tries} tries left")
         guess = int(input("choose a number from 1 to 100: "))
         def compare(guess, answer):
+            nonlocal tries
             if guess > answer:
                 print("Too High")
             elif guess < answer:
@@ -24,8 +25,8 @@ def hard_game():
                 return True
             else:
                 print("invalid input!!")
-        tries -= 1
-        return False 
+            tries -= 1
+            return False 
         compare(guess, answer)
         if guess == answer:
             print("You loose, try again")
@@ -38,6 +39,7 @@ def easy_game():
         print(f"You have {tries} tries left")
         guess = int(input("choose a number from 1 to 100: "))
         def compare(guess, answer):
+            nonlocal tries
             if guess > answer:
                 print("Too High")
             elif guess < answer:
@@ -47,11 +49,10 @@ def easy_game():
                 return True
             else:
                 print("invalid input!!")
-        tries -= 1
-        return False
+            tries -= 1
+            return False
         compare(guess, answer)
         if guess == answer:
-            print("You loose")
             return True
 
 def begin_game():
