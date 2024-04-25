@@ -1,2 +1,2 @@
 # Day 13 of 100
-- Debugging
+- Debugging session
