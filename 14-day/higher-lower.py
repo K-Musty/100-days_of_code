@@ -22,31 +22,34 @@ def check_answer(guess, a_followers, b_followers):
         return guess == "b"
     else:
         return false
+game_continue = True
 
+while game_continue:
 
-entity_a = random.choice(data)
-entity_b = random.choice(data)
-
-if entity_a == entity_b:
+    entity_a = random.choice(data)
     entity_b = random.choice(data)
 
-compare_a = format_data(entity_a)
-compare_b = format_data(entity_b)
+    if entity_a == entity_b:
+        entity_b = random.choice(data)
 
-print(f"Compare A: {compare_a}")
-print(vs)
-print(f"Against B: {compare_b}")
+    compare_a = format_data(entity_a)
+    compare_b = format_data(entity_b)
 
-guess = input("Who has more followers, A or B: ").lower()
+    print(f"Compare A: {compare_a}")
+    print(vs)
+    print(f"Against B: {compare_b}")
 
-a_follower_account = entity_a["follower_count"]
-b_follower_account = entity_b["follower_count"]
+    guess = input("Who has more followers, A or B: ").lower()
 
-is_correct = check_answer(guess, a_follower_account, b_follower_account)
+    a_follower_account = entity_a["follower_count"]
+    b_follower_account = entity_b["follower_count"]
 
-score = 0
-if is_correct:
-    score += 1
-    print(f"You're right! Current score: {score}.")
-else:
-    print("Sorry, that's wrong. Final score: {score}.")
+    is_correct = check_answer(guess, a_follower_account, b_follower_account)
+
+    score = 0
+    if is_correct:
+        score += 1
+        print(f"You're right! Current score: {score}.")
+    else:
+        print(f"Sorry, that's wrong. Final score: {score}.")
+        should_continue = False
