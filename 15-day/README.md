@@ -8,4 +8,4 @@
 
 ### What I learned
 
-- 
+- Installed pycharm development enviroment 
