@@ -33,4 +33,4 @@ resources = {
     "coffee": 100,
 }
 
-
+userInput = input("What would you like? (espresso, latte or cappuccino): ")
