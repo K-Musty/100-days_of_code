@@ -32,3 +32,5 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
+
+
