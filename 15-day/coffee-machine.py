@@ -33,4 +33,43 @@ resources = {
     "coffee": 100,
 }
 
-userInput = input("What would you like? (espresso, latte or cappuccino): ")
+start_machine = False
+while not start_machine:
+    userInput = input("What would you like (espresso, latte or cappuccino): ")
+
+
+    #TODO report option
+    if userInput == "report":
+        print(resources)
+    # TODO off option
+    if userInput == "off":
+        print("Thanks you !!!")
+        start_machine = True
+# TODO Function to get water, coffee and milk
+def waterin(MENU, drink):
+    water_in = MENU[drink]["ingredients"]["water"]
+    return water_in
+
+def coffeein(MENU, drink):
+    coffee_in = MENU[drink]["ingredients"]["coffee"]
+    return coffee_in
+
+def milkin(MENU, drink):
+    if drink != espresso:
+        milk_in = MENU[drink]["ingredient"]["coffee"]
+        return milk_in
+
+# TODO Function to get cost
+def espressocost(MENU, drink):
+    espresso_cost = MENU[drink]["cost"]
+    return espresso_cost
+
+def lattecost(MENU, drink):
+    latte_cost = MENU[drink]["cost"]
+    return latte_cost
+
+def cappucinocost(MENU, drink):
+    cappuccino_cost = MENU[drink]["cost"]
+    return cappuccino_cost
+
+
