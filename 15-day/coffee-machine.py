@@ -37,14 +37,30 @@ start_machine = False
 while not start_machine:
     userInput = input("What would you like (espresso, latte or cappuccino): ")
 
-
-    #TODO report option
     if userInput == "report":
-        print(resources)
-    # TODO off option
-    if userInput == "off":
+        print(f"Water: {resources['water']}ml")
+        print(f"Milk: {resources['milk']}ml")
+        print(f"Coffee: {resources['coffee']}g")
+        print(f"Money: ${money}")
+    elif userInput == "off":
         print("Thanks you !!!")
-        start_machine = True
+        start_machine = False
+
+    else:
+        drink = MENU[userInput]
+        if enough_resources(drink["ingredients"]):
+            print ("yessss")
+
+
+def enough_resources(resources_needed):
+    for stuff in resources_needed:
+        if resources_needed[stuff] >= resources[stuff]:
+            print(f"Sorry there is not enough {stuff}")
+            return False
+        return True
+
+
+start_machine = True
 # TODO Function to get water, coffee and milk
 def waterin(MENU, drink):
     water_in = MENU[drink]["ingredients"]["water"]
