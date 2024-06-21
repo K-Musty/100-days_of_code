@@ -57,35 +57,4 @@ def enough_resources(resources_needed):
         if resources_needed[stuff] >= resources[stuff]:
             print(f"Sorry there is not enough {stuff}")
             return False
-        return True
-
-
-start_machine = True
-# TODO Function to get water, coffee and milk
-def waterin(MENU, drink):
-    water_in = MENU[drink]["ingredients"]["water"]
-    return water_in
-
-def coffeein(MENU, drink):
-    coffee_in = MENU[drink]["ingredients"]["coffee"]
-    return coffee_in
-
-def milkin(MENU, drink):
-    if drink != espresso:
-        milk_in = MENU[drink]["ingredient"]["coffee"]
-        return milk_in
-
-# TODO Function to get cost
-def espressocost(MENU, drink):
-    espresso_cost = MENU[drink]["cost"]
-    return espresso_cost
-
-def lattecost(MENU, drink):
-    latte_cost = MENU[drink]["cost"]
-    return latte_cost
-
-def cappucinocost(MENU, drink):
-    cappuccino_cost = MENU[drink]["cost"]
-    return cappuccino_cost
-
-
+    return True
