@@ -27,11 +27,30 @@ MENU = {
     }
 }
 
+money = 0
+
 resources = {
     "water": 300,
     "milk": 200,
     "coffee": 100,
 }
+
+ def enough_resources(resources_needed):
+     for stuff in resources_needed:
+         if resources_needed[stuff] >= resources[stuff]:
+             print(f"Sorry there is not enough {stuff}")
+             return False
+        return True
+
+
+def coin_proccessor(coins):
+    total = 0
+    total += int(input("How many quarters?: "))
+    total += int(input("How many dimes?: "))
+    total += int(input("How many nickels?: "))
+    total += int(input("How many pennies?: "))
+    print(f"The Total is {total}"))
+
 
 start_machine = False
 while not start_machine:
@@ -56,6 +75,5 @@ while not start_machine:
     else:
         drink = MENU[userInput]
         if enough_resources(drink["ingredients"]):
-            print ("yessss")
 
 
