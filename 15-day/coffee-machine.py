@@ -35,11 +35,11 @@ resources = {
     "coffee": 100,
 }
 
- def enough_resources(resources_needed):
-     for stuff in resources_needed:
-         if resources_needed[stuff] >= resources[stuff]:
-             print(f"Sorry there is not enough {stuff}")
-             return False
+def enough_resources(resources_needed):
+    for stuff in resources_needed:
+        if resources_needed[stuff] >= resources[stuff]:
+            print(f"Sorry there is not enough {stuff}")
+            return False
         return True
 
 
