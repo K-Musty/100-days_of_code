@@ -43,7 +43,7 @@ def enough_resources(resources_needed):
         return True
 
 
-def coin_proccessor(coins):
+def coin_proccessor(total):
     total = 0
     total += int(input("How many quarters?: "))
     total += int(input("How many dimes?: "))
