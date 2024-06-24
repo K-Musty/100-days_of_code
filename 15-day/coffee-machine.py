@@ -49,7 +49,7 @@ def coin_proccessor(total):
     total += int(input("How many dimes?: "))
     total += int(input("How many nickels?: "))
     total += int(input("How many pennies?: "))
-    print(f"The Total is {total}"))
+    print(f"The Total is {total}")
 
 
 start_machine = False
