@@ -34,7 +34,6 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
-
 def enough_resources(resources_needed):
     for stuff in resources_needed:
         if resources_needed[stuff] >= resources[stuff]:
@@ -43,17 +42,9 @@ def enough_resources(resources_needed):
         return True
 
 
-def coin_proccessor(total):
-    total = 0
-    total += int(input("How many quarters?: "))
-    total += int(input("How many dimes?: "))
-    total += int(input("How many nickels?: "))
-    total += int(input("How many pennies?: "))
-    print(f"The Total is {total}")
 
-
-start_machine = False
-while not start_machine:
+start_machine = True
+while start_machine:
     userInput = input("What would you like (espresso, latte or cappuccino): ")
 
 
@@ -65,9 +56,7 @@ while not start_machine:
     elif userInput == "off":
         print("Thanks you !!!")
         start_machine = False
-
     else:
         drink = MENU[userInput]
         if enough_resources(drink["ingredients"]):
-
-
+            print("good")
