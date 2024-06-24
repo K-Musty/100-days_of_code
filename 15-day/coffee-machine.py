@@ -56,13 +56,7 @@ start_machine = False
 while not start_machine:
     userInput = input("What would you like (espresso, latte or cappuccino): ")
 
-    def enough_resources(resources_needed):
-    for stuff in resources_needed:
-        if resources_needed[stuff] >= resources[stuff]:
-            print(f"Sorry there is not enough {stuff}")
-            return False
-    return True
-                 
+
     if userInput == "report":
         print(f"Water: {resources['water']}ml")
         print(f"Milk: {resources['milk']}ml")
