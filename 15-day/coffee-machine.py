@@ -42,6 +42,14 @@ def enough_resources(resources_needed):
         return True
 
 
+def coins(total):
+    quaters = int(input("Insert Quaters: ")) * 0.25
+    dimes = int(input("Insert dimes: ")) * 0.10
+    nickles = int(input("Insert nickles: ")) * 0.05
+    pennies = int(input("Insert pennies: ")) * 0.01
+    total = quaters + dimes + nickles + pennies
+    print(total)
+
 
 start_machine = True
 while start_machine:
@@ -58,5 +66,15 @@ while start_machine:
         start_machine = False
     else:
         drink = MENU[userInput]
+        def enough_money(money_needed, money_need):
+            if money_need >= money_needed:
+                return False
+            return True
+
+
+
         if enough_resources(drink["ingredients"]):
+            
+            #enough_money(to_int, cash)
+
             print("good")
