@@ -1,1 +1,2 @@
-another_module = 12
+
+another_variable = 12
