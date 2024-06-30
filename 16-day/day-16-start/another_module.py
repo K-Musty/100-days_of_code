@@ -1,2 +1,1 @@
-import another_module
 
