@@ -1,12 +1,7 @@
 #!/usr/bin/python3
 # import another_module
-# print(another_module.another_variable)
-
-
-
-
-
-from turtle import Turtle
+# print(another_module.another_variable);
+import turtle
 # Turtle class
-timmy = Turtle()
+timmy = turtle.Turtle()
 print(timmy)
