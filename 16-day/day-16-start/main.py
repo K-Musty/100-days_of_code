@@ -7,6 +7,8 @@ from turtle import Turtle, Screen
 timmy = Turtle()
 print(timmy)
 timmy.shape("turtle")
+#changing color challenge
+timmy.color("aquamarine3", "DarkOliveGreen4")
 
 my_screen = Screen()
 print(my_screen.canvheight)
