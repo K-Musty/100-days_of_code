@@ -10,8 +10,8 @@ timmy.shape("turtle")
 #changing color challenge
 timmy.color("aquamarine3", "DarkOliveGreen4")
 
+#Screen display
 my_screen = Screen()
 print(my_screen.canvheight)
-
 my_screen.exitonclick()
 
