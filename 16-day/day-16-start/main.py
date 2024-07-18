@@ -17,8 +17,8 @@ timmy.left(120)
 timmy.forward(100)
 
 
+#Screen display
 my_screen = Screen()
 print(my_screen.canvheight)
-
 my_screen.exitonclick()
 
