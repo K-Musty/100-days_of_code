@@ -25,10 +25,10 @@
 # my_screen.exitonclick()
 
 #Pretty table packege import
-from prettytable import PrettyTable
-#creating Table
-table = PrettyTable()
-table.add_column("Pokemon Name", ["Pikachu", "Squirtle", "Charmander"])
-table.add_column("Type", ["Electric", "Water", "Fire"])
-table.align = "l"
-print(table)
+# from prettytable import PrettyTable
+# #creating Table
+# table = PrettyTable()
+# table.add_column("Pokemon Name", ["Pikachu", "Squirtle", "Charmander"])
+# table.add_column("Type", ["Electric", "Water", "Fire"])
+# table.align = "l"
+# print(table)
