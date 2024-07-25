@@ -41,7 +41,7 @@ def enough_resources(resources_needed):
             return False
         return True
 
-
+insert = 0
 def coins(total):
     quaters = int(input("Insert Quaters: ")) * 0.25
     dimes = int(input("Insert dimes: ")) * 0.10
@@ -49,7 +49,12 @@ def coins(total):
     pennies = int(input("Insert pennies: ")) * 0.01
     total = quaters + dimes + nickles + pennies
     print(total)
+    return total
 
+def deduct_resources(drink_type):
+    for items in drink_type:
+        resources[items] = resources[items] - drink_type[items]
+    return resources
 
 start_machine = True
 while start_machine:
@@ -66,15 +71,24 @@ while start_machine:
         start_machine = False
     else:
         drink = MENU[userInput]
-        def enough_money(money_needed, money_need):
-            if money_need >= money_needed:
-                return False
-            return True
-
+        def enough_money(MENU, userInput, money_needed):
+            if money_needed >= MENU[userInput]["cost"]:
+                return True
+            print("Sorry that's not enough money. Money refunded")
+            return False
 
 
         if enough_resources(drink["ingredients"]):
-            
-            #enough_money(to_int, cash)
+            cash = coins(insert)
+            def process_change(cash):
+                total_cost = MENU[userInput]["cost"]
+                change = cash - total_cost
+                print(f"Your change is {change:.2f}, thank you")
+                return change
 
-            print("good")
+            if enough_money(MENU, userInput, cash):
+                money += cash
+                changed = process_change(cash)
+                deduct_resources(MENU[userInput]["ingredients"])
+                money -= changed
+                print(f"Here is your {userInput}, ENJOY!")

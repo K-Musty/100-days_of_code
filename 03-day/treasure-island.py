@@ -40,7 +40,7 @@ elif new_way == "right":
     elif new_lake == "wait":
         print("What a lake, you're now at the stop")
         new_door = input("choose a door, red, yellow or blue? ").lower()
-        if new_door == blue:
+        if new_door == "blue":
             print('You have won' + '''
 *******************************************************************************
           |                   |                  |                     |
