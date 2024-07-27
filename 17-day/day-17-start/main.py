@@ -1,6 +1,7 @@
-''' To create a class we use
-    "class ClassName: "
-        '''
+#!/usr/bin/python3
+#''' To create a class we use
+#    "class ClassName: "
+#        '''
 class User:
     pass
 
