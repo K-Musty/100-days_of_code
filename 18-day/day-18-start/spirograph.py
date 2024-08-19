@@ -14,10 +14,15 @@ def random_color():
     color = (r, g, b)
     return color
 
-for _ in range(100):
-    tim.color(random_color())
-    tim.circle(100)
-    tim.setheading(tim.heading() + 10)
+
+def draw_spiral(size_of_gap):
+    for _ in range(int(360 / size_of_gap)):
+        tim.color(random_color())
+        tim.circle(100)
+        tim.setheading(tim.heading() + size_of_gap)
+
+
+draw_spiral(2)
 
 
 screen = Screen()
