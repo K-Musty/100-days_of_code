@@ -29,9 +29,9 @@ while is_race_on:
             is_race_on = False
             winning_color = turtle.pencolor()
             if winning_color == user_choice:
-                print("You've won!!")
+                print(f"You've won!!, the {winning_color} turtle won")
             else:
-                print("You've lost")
+                print(f"You've lost, the {winning_color} turtle won ")
         speed = random.randint(0, 10)
         turtle.forward(speed)
 
