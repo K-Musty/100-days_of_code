@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from turtle import Turtle, Screen
 import time
 screen = Screen()
