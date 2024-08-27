@@ -15,6 +15,8 @@ pong.color("white")
 pong.penup()
 screen.update()
 
+
+
 ping = Turtle()
 ping.goto(380, 0)
 ping.shape("square")
@@ -23,8 +25,21 @@ ping.color("white")
 ping.penup()
 screen.update()
 
+def go_up():
+    new_y = ping.ycor() + 20
+    ping.goto(ping.xcor(), new_y)
+
+screen.listen()
+screen.onkey(go_up, "g")
+
+# screen.onkey("up", "up")
+
+
+
+
 center = Turtle()
 center.goto(0,-320)
+center.hideturtle()
 center.hideturtle()
 center.color("white")
 # center.goto(0, 370)
