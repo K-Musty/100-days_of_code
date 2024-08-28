@@ -46,10 +46,15 @@ while game_is_on:
     if ball.ycor() > 240 or ball.ycor() < -240:
         ball.bounce_y()
 
+    #Detection with paddle
     if ball.distance(r_paddle) < 50 and ball.xcor() > 350 or ball.distance(l_paddle) < 50 and ball.xcor() < -350:
         ball.bounce_x()
 
-    if ball.xcor() > screen.screensize(800, 500):
-        game_is_on = False
+
+    if ball.xcor() > 380:
+        ball.reset_position()
+
+    if ball.xcor() < -380:
+        ball.reset_position()
 
 screen.exitonclick()
