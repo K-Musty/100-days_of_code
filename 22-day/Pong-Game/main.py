@@ -13,7 +13,7 @@ screen.tracer(0)
 
 r_paddle = Paddle((380, 0))
 l_paddle = Paddle((-380, 0))
-scoreboard = Scoreboard
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(r_paddle.go_up, "Up")
@@ -49,11 +49,13 @@ while game_is_on:
     # Detection with paddle
     if ball.distance(r_paddle) < 50 and ball.xcor() > 350 or ball.distance(l_paddle) < 50 and ball.xcor() < -350:
         ball.bounce_x()
-
+    # left point
     if ball.xcor() > 380:
         ball.reset_position()
-
+        scoreboard.l_point()
+    # right point
     if ball.xcor() < -380:
         ball.reset_position()
+        scoreboard.r_point()
 
 screen.exitonclick()
