@@ -10,8 +10,8 @@ screen.bgcolor("black")
 screen.title("Pong Game")
 screen.tracer(0)
 
-r_paddle = Paddle((370, 0))
-l_paddle = Paddle((-370, 0))
+r_paddle = Paddle((380, 0))
+l_paddle = Paddle((-380, 0))
 
 
 screen.listen()
@@ -42,5 +42,14 @@ while game_is_on:
     screen.update()
     ball.move()
 
+    #Detection with wall
+    if ball.ycor() > 240 or ball.ycor() < -240:
+        ball.bounce_y()
+
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 350 or ball.distance(l_paddle) < 50 and ball.xcor() < -350:
+        ball.bounce_x()
+
+    if ball.xcor() > screen.screensize(800, 500):
+        game_is_on = False
 
 screen.exitonclick()
