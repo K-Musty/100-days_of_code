@@ -9,7 +9,9 @@ class CarManager:
 
     def __init__(self):
         self.all_cars = []
-
+        for i in range(6):
+            self.create_cars()
+            self.all_cars.append(i)
 
 
     def create_cars(self):
@@ -20,4 +22,5 @@ class CarManager:
         new_car.shapesize(stretch_len=2, stretch_wid=1)
         random_y = random.randint(-250, 250)
         new_car.goto(300, random_y)
-        self.all_cars.append(new_car)
+        for i in range(random.randint(20, 20)):
+            new_car.backward(20)
