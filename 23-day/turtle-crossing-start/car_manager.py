@@ -9,9 +9,12 @@ class CarManager:
 
     def __init__(self):
         all_cars = []
+        for i in range(6):
+            self.create_cars()
+            all_cars.append(i)
 
     def create_cars(self):
-        self.new_car = Turtle
+        self.new_car = Turtle()
         self.new_car.shape("square")
         self.new_car.penup()
         self.new_car.color(COLORS[0])
