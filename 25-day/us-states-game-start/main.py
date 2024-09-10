@@ -1,4 +1,5 @@
 import turtle
+import pandas
 screen = turtle.Screen()
 screen.title("U.S. States Game")
 
@@ -13,9 +14,22 @@ turtle.shape(image)
 #
 # turtle.onclick(get_mouse_click_coor)
 
-answer = screen.textinput("Guess the State", "Name a state")
+data = pandas.read_csv("50_states.csv")
+data_states = data.state.to_list()
 
 
+guessed_states = []
+while len(guessed_states) < 50:
+
+    answer = screen.textinput(f"{len(guessed_states)}/50 states guessed correctly", "Name a state").title()
+    if answer in data_states:
+        guessed_states.append(answer)
+        tim = turtle.Turtle()
+        tim.penup()
+        tim.hideturtle()
+        attr = data[data.state == answer]
+        # tim.goto(int(attr.x), int(attr.y)) or
+        tim.goto(int(attr.x.iloc[0]), int(attr.y.iloc[0]))
+        tim.write(answer)
 
 turtle.mainloop()
-
