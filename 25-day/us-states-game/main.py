@@ -24,10 +24,7 @@ while len(guessed_states) < 50:
     answer = screen.textinput(f"{len(guessed_states)}/50 states guessed correctly", "Name a state").title()
 
     if answer == "Exit":
-        not_guessed = []
-        for state in data_states:
-            if state not in guessed_states:
-                not_guessed.append(state)
+        not_guessed = [state for state in data_states if state not in guessed_states]
         new_data = pandas.DataFrame(not_guessed)
         new_data.to_csv("new_csv.csv")
 
