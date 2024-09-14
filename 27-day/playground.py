@@ -1,3 +1,4 @@
+# Playing around with arguments
 # def add(*args):
 #     sum = 0
 #     for n in args:
@@ -6,6 +7,7 @@
 #
 #
 # print(add(2, 5, 7, 8))
+
 
 def calculate(n, **kwargs):
     print(kwargs)
