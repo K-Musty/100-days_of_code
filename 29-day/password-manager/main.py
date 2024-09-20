@@ -50,7 +50,6 @@ def save_data():
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
-# window.minsize(width=750, height=500)
 window.config(padx=100, pady=100, background="white")
 
 canvas = Canvas(width=200, height=200, background="white", highlightthickness=0)
@@ -86,5 +85,6 @@ gen_password_button.grid(column=2, row=4)
 
 add_button = Button(text="Add", width=40, command=save_data)
 add_button.grid(column=1, row=5, columnspan=2)
+
 
 window.mainloop()
