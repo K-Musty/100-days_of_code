@@ -3,7 +3,6 @@ from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
 import json
-
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 
@@ -114,5 +113,6 @@ add_button = Button(text="Add", width=39, command=save)
 add_button.grid(row=4, column=1, columnspan=2)
 search_button = Button(text="Search", width=14, command=search)
 search_button.grid(row=1, column=2)
+
 
 window.mainloop()
