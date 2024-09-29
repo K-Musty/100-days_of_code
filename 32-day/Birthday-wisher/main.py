@@ -32,5 +32,11 @@
 import smtplib
 import datetime as dt
 now = dt.datetime.now()
+month = now.month
 year = now.year
+day_of_week = now.weekday()
+print(day_of_week)
 print(year)
+
+date_of_birth = dt.datetime(day=25, month=4, year=1999,)
+print(date_of_birth)
