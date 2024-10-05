@@ -1,11 +1,26 @@
 import requests
+MY_LAT = 11.999970
+MY_LNG = 8.534860
 
-response = requests.get(url="http://api.open-notify.org/iss-now.json")
+# response = requests.get(url="http://api.open-notify.org/iss-now.json")
+# response.raise_for_status()
+#
+# data = response.json() # ["iss_position"]["latitude"]
+# latitude = data["iss_position"]["latitude"]
+# longitude = data["iss_position"]["longitude"]
+#
+# iss_position = (longitude, latitude)
+# print(iss_position)
+
+parameter = {
+    "lat": MY_LAT,
+    "lng": MY_LNG,
+}
+
+response = requests.get(url="https://api.sunrise-sunset.org.json", params=parameter)
 response.raise_for_status()
 
-data = response.json() # ["iss_position"]["latitude"]
-latitude = data["iss_position"]["latitude"]
-longitude = data["iss_position"]["longitude"]
-
-iss_position = (longitude, latitude)
-print(iss_position)
+data = response.json()
+print(data)
+# sunrise = data[""]
+# sunset = data[""]
