@@ -1,10 +1,13 @@
 from tkinter import *
 THEME_COLOR = "#375362"
+from data import question_data
 
 class QuizInterface:
 
     def __init__(self):
         # Window
+        def next_question():
+            self.canvas.itemconfig(self.question_text, text=f"{question_data}")
         self.window = Tk()
         self.window.title("Quizzler")
         self.window.config(padx=100, pady=100, background=THEME_COLOR)
@@ -20,10 +23,13 @@ class QuizInterface:
 
         # Buttons
         self.right_image = PhotoImage(file="images/true.png")
-        self.right_answer = Button(width=100, height=100, image=self.right_image, highlightthickness=0)
+        self.right_answer = Button(width=100, height=100, image=self.right_image, highlightthickness=0, command=next_question)
         self.right_answer.grid(row=2, column=0)
         self.wrong_image = PhotoImage(file="images/false.png")
         self.wrong_answer = Button(width=100, height=100, image=self.wrong_image, highlightthickness=0)
         self.wrong_answer.grid(row=2, column=1)
 
+
+        def next_question():
+            self.canvas.itemconfig(self.question_text, text=f"{question_data}")
         self.window.mainloop()
