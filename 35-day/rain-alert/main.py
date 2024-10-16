@@ -1,6 +1,6 @@
 import requests
 import json
-# api_key = "f6f9c5f85cdcd261168cdd9340fdacca"
+
 # parameters =  {
 #     "lat": 11.999970,
 #     "lon": 8.534860,
