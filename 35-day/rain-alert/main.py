@@ -1,6 +1,5 @@
 import requests
 import json
-
 # parameters =  {
 #     "lat": 11.999970,
 #     "lon": 8.534860,
