@@ -1,4 +1,4 @@
-import requests
+# import requests
 import json
 # parameters =  {
 #     "lat": 11.999970,
@@ -10,5 +10,15 @@ import json
 # data = response.json()
 with open("weather.json") as file:
     data = json.load(file)
-weather_data = data["hourly"][0]["weather"][0]["id"]
-print(weather_data)
+
+will_rain = False
+# weather_data = data["hourly"][0]["weather"][0]["id"]
+weather_slice = weather_data = data["hourly"][:3] # For 3 hours
+for hour_data in weather_slice:
+    condition_code = hour_data["weather"][0]["id"]
+    if int(condition_code) < 700:
+        will_rain = True
+
+if will_rain:
+    print("Bring an Umbrella ")
+print(weather_slice)
