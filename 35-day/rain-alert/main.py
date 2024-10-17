@@ -1,8 +1,10 @@
 # import requests
+import os
+
 from twilio.rest import Client
 import json
-account_sid = ""
-auth_token = ("")
+account_sid = "AC800c143a8a9fbe637dc1dabbbcc9a6ad"
+auth_token = os.environ.get("AUTH_TOKEN")
 
 # parameters =  {
 #     "lat": 11.999970,
