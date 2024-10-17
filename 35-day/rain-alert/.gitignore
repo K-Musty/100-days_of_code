@@ -1,3 +1,1 @@
 .env
-account_sid = "AC800c143a8a9fbe637dc1dabbbcc9a6ad"
-auth_token = os.environ.get("AUTH_TOKEN")

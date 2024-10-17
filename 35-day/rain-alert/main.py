@@ -3,6 +3,7 @@ import os
 
 from twilio.rest import Client
 import json
+
 # parameters =  {
 #     "lat": 11.999970,
 #     "lon": 8.534860,
