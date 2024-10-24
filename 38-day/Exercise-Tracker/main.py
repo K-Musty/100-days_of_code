@@ -1,7 +1,16 @@
 import requests
+from datetime import datetime
 
+
+
+
+exercise_input = input("Tell me which exercises you did ")
 parameters = {
-    "query": input("Tell me which exercises you did ")
+    "query": exercise_input,
+    "gender": "male",
+    "weight_kg": "65",
+    "height_cm": "185",
+    "age": "22"
 }
 headers = {
     "Content-Type": "application/json",
@@ -10,4 +19,22 @@ headers = {
 }
 
 response = requests.post(url=api_endpoint, json=parameters, headers=headers)
-print(response.text)
+data = response.json()
+# print(response.text)
+
+date_today = datetime.now().strftime("%d/%m/%Y")
+time_now = datetime.now().strftime("%X")
+
+for exercise in data["exercises"]:
+    parameter = {
+        "workout": {
+            "date": date_today,
+            "time": time_now,
+            "exercise": exercise["name"].title(),
+            "duration": exercise["duration_min"],
+            "calories": exercise["nf_calories"]
+        }
+    }
+
+    sheet_response = requests.post(url=sheet_api, json=parameter)
+    print(sheet_response.text)
