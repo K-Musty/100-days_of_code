@@ -2,8 +2,6 @@ import requests
 from datetime import datetime
 
 
-
-
 exercise_input = input("Tell me which exercises you did ")
 parameters = {
     "query": exercise_input,
@@ -15,7 +13,7 @@ parameters = {
 headers = {
     "Content-Type": "application/json",
     "x-app-id": APP_ID,
-    "x-app-key": API_KEY
+    "x-app-key": API_KEY,
 }
 
 response = requests.post(url=api_endpoint, json=parameters, headers=headers)
@@ -35,6 +33,9 @@ for exercise in data["exercises"]:
             "calories": exercise["nf_calories"]
         }
     }
+    headers = {
+        "Authorization": f"Bearer {bearer_token}"
+    }
 
-    sheet_response = requests.post(url=sheet_api, json=parameter)
+    sheet_response = requests.post(url=sheet_api, json=parameter, headers=headers)
     print(sheet_response.text)
