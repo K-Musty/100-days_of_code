@@ -1,6 +1,25 @@
+#!/usr/bin/python3
 import requests
 from datetime import datetime
+import os
 
+print(os.environ)
+APP_ID = os.getenv('APP_ID')
+API_KEY = os.getenv('API_KEY')
+api_endpoint = os.getenv('API_ENDPOINT')
+sheet_api = os.getenv('SHEET_API')
+bearer_token = os.getenv('BEARER_TOKEN')
+
+# print("APP_ID:", APP_ID)
+# print("API_KEY:", API_KEY)
+# print("API_ENDPOINT:", api_endpoint)
+# print("SHEET_API:", sheet_api)
+# print("BEARER_TOKEN:", bearer_token)
+
+# if not api_endpoint:
+#     raise ValueError("API_ENDPOINT is not set or is None")
+# if not sheet_api:
+#     raise ValueError("SHEET_API is not set or is None")
 
 exercise_input = input("Tell me which exercises you did ")
 parameters = {
