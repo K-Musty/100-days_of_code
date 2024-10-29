@@ -1,9 +1,11 @@
 #This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.
-# import data_manager
-#
-# data = data_manager.DataManager()
-# data.get_data()
-from flight_search import FlightSearch
+from data_manager import DataManager
+# from flight_search import FlightSearch
+
+
+data = DataManager()
+# sheet = data.get_data()
+
 sheet_data = {
   "prices": [
     {
@@ -62,18 +64,45 @@ sheet_data = {
     }
   ]
 }
-def update_iata(sheet):
-    flight_search = FlightSearch()
-    for item in sheet["prices"]:
-      if item["iataCode"] == "":
-        city_name = item["city"]
-        iata_code = flight_search.get_iata_code(city_name)
-        item["iataCode"] = iata_code
 
-    return sheet
+# updating sheet
+data.update_iata(sheet_data)
 
-data_iata = update_iata(sheet_data)
-print(data_iata)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+# def update_iata(sheet):
+#     flight_search = FlightSearch()
+#     for item in sheet["prices"]:
+#       if item["iataCode"] == "":
+#         city_name = item["city"]
+#         iata_code = flight_search.get_iata_code(city_name)
+#         item["iataCode"] = iata_code
+#
+#     return sheet
+#
+# data_iata = update_iata(sheet_data)
+# print(data_iata)
 
 
 
