@@ -20,7 +20,6 @@ class DataManager:
                 row_id = item["id"]
                 put_api = f"{self.api_sheety}/{row_id}"
                 iata_code = flight_search.get_iata_code(city_name)
-
                 parameters = {
                     "price": {
                         "iataCode": iata_code
