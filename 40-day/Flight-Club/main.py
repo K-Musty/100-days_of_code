@@ -13,13 +13,14 @@ while True:
     if first_email == second_email:
         parameters = {
             "user": {
-                "First Name": first_name,
-                "Last Name": last_name,
-                "Email": first_email
+                "firstName": first_name,
+                "lastName": last_name,
+                "email": first_email
             }
         }
         response = requests.post(url=url, json=parameters, headers=headers)
-        # print(response.status_code)
+        response.raise_for_status()
+        print(response.status_code)
         print("Your now in the club !!!")
         break
     else:
