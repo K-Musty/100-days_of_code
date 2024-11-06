@@ -98,10 +98,16 @@ for destination in sheet:
 
     if flight.price < destination["lowestPrice"]:
       notification_manager.send_sms(
-        message=f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airpor}"
+        message=f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airport}"
                 f" to {flight.destination_city}-{flight.destination_airport}, "
                 f"from {flight.out_date} to {flight.return_date}."
       )
+      if flight.price > 0:
+        notification_manager.send_sms(
+          message = f"\n\nFlight has {flight.stop_overs}, via {flight.via_city}."
+         "Link :" f"https://www.google.co.uk/flights?hl=en#flt={flight.origin_airport}.{flight.destination_airport}.{flight.out_date}*{flight.destination_airport}.{flight.origin_airport}.{flight.return_date}"
+        )
+
 data_iata = update_iata(sheet)
 print(data_iata)
 
