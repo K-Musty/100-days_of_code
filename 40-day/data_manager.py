@@ -1,14 +1,19 @@
 import requests
 from flight_search import FlightSearch
+from main import sheet_data
 
 
 class DataManager:
     #This class is responsible for talking to the Google Sheet.
+    def __init__(self):
+        self.destination_code = {}
 
 
     def get_data(self):
         response =  requests.get(url=self.api_sheety, headers=self.headers)
         print(response.text)
+        self.destination_code = sheet_data["prices"]
+        return self.destination_code
 
     def update_iata(self, sheet):
         flight_search = FlightSearch(api_key="")
