@@ -12,8 +12,8 @@ class NotificationManager:
     def send_sms(self, message):
         message = self.client.messages.create(
             body=message,
-            from_=,
-            to=,
+            from_="",
+            to="",
         )
         # Prints if successfully sent.
         print(message.sid)
