@@ -1,5 +1,8 @@
 import requests
-
+url = "sheety api"
+headers = {
+    "Authorization": ""
+}
 
 print("Welcome to K-Musty's Flight Club !!\n"
       "We find the best flight deals and email you")
