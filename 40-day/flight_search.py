@@ -3,7 +3,13 @@ from flight_data import FlightData
 class FlightSearch:
     #This class is responsible for talking to the Flight Search API.
     def __init__(self, api_key):
-
+        self.api_key = api_key
+        self.cheap_api = ""
+        self.aviation_api = "https://api.aviationstack.com/v1/cities"
+        self.headers = {
+            "x-rapidapi-key": "",
+            "x-rapidapi-host": ""
+        }
 
     def get_iata_code(self, city_name):
         aviation_params = {
@@ -58,15 +64,15 @@ class FlightSearch:
         except IndexError:
             print(f"No flights found for {destination_city_code}.")
             return None
-
-        flight_data = FlightData(
-            price=data["price"],
-            departure_city=data["route"][0]["cityFrom"],
-            departure_code=data["route"][0]["flyFrom"],
-            destination_city=data["route"][0]["cityTo"],
-            destination_code=data["route"][0]["flyTo"],
-            go_date=data["route"][0]["local_departure"].split("T")[0],
-            return_date=data["route"][1]["local_departure"].split("T")[0]
-        )
-        print(f"{flight_data.destination_city}: £{flight_data.price}")
-        return flight_data
+        else:
+            flight_data = FlightData(
+                price=data["price"],
+                departure_city=data["route"][0]["cityFrom"],
+                departure_code=data["route"][0]["flyFrom"],
+                destination_city=data["route"][0]["cityTo"],
+                destination_code=data["route"][0]["flyTo"],
+                go_date=data["route"][0]["local_departure"].split("T")[0],
+                return_date=data["route"][1]["local_departure"].split("T")[0]
+            )
+            print(f"{flight_data.destination_city}: £{flight_data.price}")
+            return flight_data
