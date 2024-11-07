@@ -95,8 +95,14 @@ for destination in sheet:
         from_time=tomorrow,
         to_time=six_month_from_today
     )
+    if flight is None:
+      continue
+
 
     if flight.price < destination["lowestPrice"]:
+      users = data.get_customer_emails()
+      emails = [row["email"] for row in users]
+      names = [row["firstName"] for row in users]
       notification_manager.send_sms(
         message=f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airport}"
                 f" to {flight.destination_city}-{flight.destination_airport}, "
