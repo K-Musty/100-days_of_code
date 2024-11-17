@@ -1,3 +1,5 @@
+from operator import index
+
 from bs4 import BeautifulSoup
 import requests
 
@@ -20,15 +22,18 @@ for article in articles:
 upvotes = soup.find_all(name="span", class_="score")
 
 for votes in upvotes:
-    article_votes.append(votes.getText())
+    article_votes.append(int(votes.getText().split()[0]))
 
-count = 1
-for i in range(len(articles_links)):
-    print(count)
-    print(articles_texts[i])
-    print(articles_links[i])
-    print(f"{article_votes[i]}\n")
-    count = count + 1
+largest = max(article_votes)
+largest_index = article_votes.index(largest)
+
+print(articles_texts[largest_index])
+print(articles_links[largest_index])
+
+# for i in range(len(articles_links) -1):
+#     print(articles_texts[i])
+#     print(articles_links[i])
+#     print(f"{article_votes[i]}\n")
 
 
 
