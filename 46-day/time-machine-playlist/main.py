@@ -9,12 +9,10 @@ URL = f"https://www.billboard.com/charts/hot-100/{travel_year}"
 response = requests.get(url=URL)
 
 soup = BeautifulSoup(response.text, "html.parser")
-songs = []
-song_titles = soup.find_all(name="h3", id="title-of-a-story")
-for items in song_titles:
-    song_in_text = items.get_text(strip=True)
-    songs.append(song_in_text)
 
+song_titles = soup.find_all(name="h3", id="title-of-a-story")
+
+songs = [items.get_text(strip=True) for items in song_titles]
 
 song_names = songs[6:403:4]
 print(len(song_names))
