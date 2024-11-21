@@ -10,7 +10,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
                                                client_secret=SPOTIPY_CLIENT_SECRET,
                                                redirect_uri=SPOTIPY_REDIRECT_URI,
                                                scope="playlist-modify-private",
-                                               cache_path="token.txt",
+                                               cache_path="../token.txt",
                                                show_dialog=True))
 USER_ID = sp.current_user()["id"]
 PLAYLIST_NAME = "Time Machine Playlist"
