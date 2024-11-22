@@ -15,6 +15,18 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
                                                scope="playlist-modify-private",
                                                cache_path="../token.txt",
                                                show_dialog=True))
+USER_ID = sp.current_user()["id"]
+PLAYLIST_NAME = "Time Machine Playlist"
+PLAYLIST_DESCRIPTION = "Takes top 100 music from date in past"
+new_playlist = sp.user_playlist_create(
+    user=USER_ID,
+    name=PLAYLIST_NAME,
+    public=False,
+    description=PLAYLIST_DESCRIPTION
+)
+
+print(f"Playlist '{PLAYLIST_NAME}' created successfully! Playlist ID: {new_playlist['id']}")
+
 
 travel_year = input("What year you would like to travel to in YYYY-MM-DD format?  ")
 
