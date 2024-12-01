@@ -1,4 +1,4 @@
-import time
+# import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -17,11 +17,20 @@ article_count = driver.find_element(By.CSS_SELECTOR, value="#articlecount a")
 comm_portal = driver.find_element(By.PARTIAL_LINK_TEXT, value="Community portal")
 # comm_portal.click()
 
-search = driver.find_element(By.NAME, value="search")
-search.send_keys("Python")
-search.send_keys(Keys.ENTER)
+try:
+    search = driver.find_element(By.NAME, "search")
+    search.send_keys("Python")
+    search.send_keys(Keys.ENTER)
+    print("Search executed successfully!")
+except Exception as e:
+    print(f"An error occurred: {e}")
 
-time.sleep(10)
+
+input("Press Enter to close the browser...")
+# or
+# time.sleep(10)
 
 # print(article_count.text.split()[0])
-# driver.quit()
+
+
+driver.quit()
