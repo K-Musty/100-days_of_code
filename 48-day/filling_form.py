@@ -19,4 +19,5 @@ email.send_keys("kmustapha9564@gmail.com")
 button = driver.find_element(By.CSS_SELECTOR, value=".btn ")
 button.send_keys(Keys.ENTER)
 
+
 input("Press Enter to close the browser>>>>> ")
