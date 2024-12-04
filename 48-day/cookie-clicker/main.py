@@ -29,7 +29,7 @@ def get_cookies_per_second():
 
 
 time_skip = time.time() + 5
-end_time = time.time() + 300
+end_time = time.time() + 15
 
 while True:
 
@@ -44,7 +44,7 @@ while True:
         for i in right_panel:
             item_text = i.text
             if "-" in item_text:
-                item_price = int(item_text.split("-")[1].split("\n")[0].strip())
+                item_price = int(item_text.split("-")[1].split("\n")[0].strip().replace(",", ""))
                 if item_price <= current_amount:
                     prices_affordable.append((item_price, i))
                     # print(item_price)
@@ -64,7 +64,7 @@ while True:
             if most_expensive_item:
                 most_expensive_item.click()
 
-        time.sleep(0.5)
+        time_skip = time.time() + 5
 
     if time.time() > end_time:
         print(f"Cookies per second is: {get_cookies_per_second()}")
