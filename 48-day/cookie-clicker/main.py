@@ -14,32 +14,61 @@ driver.get("http://orteil.dashnet.org/experiments/cookie/")
 
 cookie = driver.find_element(By.ID, value="cookie")
 money = driver.find_element(By.ID, "money")
-right_panel = driver.find_elements(By.CSS_SELECTOR, "#store div")
+
+
 
 
 
 def get_current_money():
-    money_text = money.text
-    return int(money_text.replace(",","")) if money_text.isdigit() else 0
+    money_text = money.text.replace(",", "")
+    return int(money_text) if money_text.isdigit() else 0
+
+def get_cookies_per_second():
+    cps_element = driver.find_element(By.ID, "cps")
+    return cps_element.text
 
 
 time_skip = time.time() + 5
+end_time = time.time() + 300
 
 while True:
 
     cookie.click()
 
+
     if time.time() > time_skip:
         current_amount = get_current_money()
+        prices_affordable = []
+        right_panel = driver.find_elements(By.CSS_SELECTOR, "#store div")
 
-        for item in right_panel:
-            item_price = item.text.replace(",", "")
+        for i in right_panel:
+            item_text = i.text
+            if "-" in item_text:
+                item_price = int(item_text.split("-")[1].split("\n")[0].strip())
+                if item_price <= current_amount:
+                    prices_affordable.append((item_price, i))
+                    # print(item_price)
 
-            if int(item_price) <= int(current_amount):
-                item.click()
-                time_skip = time_skip + 5
+        if prices_affordable:
+
+            max_price = 0
+            most_expensive_item = None
+
+            # Manually find the most expensive item
+            for price, item in prices_affordable:
+                if int(price) > int(max_price):
+                    max_price = price
+                    most_expensive_item = item
+
+            # Click the most expensive item
+            if most_expensive_item:
+                most_expensive_item.click()
 
         time.sleep(0.5)
 
-    driver.quit()
+    if time.time() > end_time:
+        print(f"Cookies per second is: {get_cookies_per_second()}")
+        break
 
+
+driver.quit()
