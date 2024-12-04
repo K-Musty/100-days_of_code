@@ -29,7 +29,7 @@ def get_cookies_per_second():
 
 
 time_skip = time.time() + 5
-end_time = time.time() + 15
+end_time = time.time() + 300
 
 while True:
 
