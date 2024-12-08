@@ -19,3 +19,5 @@ driver = webdriver.Chrome(service=service)
 
 driver.get(url)
 
+time.sleep(10)
+
