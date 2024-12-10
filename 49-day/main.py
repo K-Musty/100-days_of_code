@@ -8,7 +8,6 @@ MY_EMAIL = ""
 MY_PASSWORD = ""
 
 
-
 url = "https://www.linkedin.com/jobs/search/?currentJobId=4071837289&geoId=103535056&keywords=python%20developer&origin=JOB_SEARCH_PAGE_LOCATION_SUGGESTION&refresh=true"
 
 
@@ -18,13 +17,12 @@ driver = webdriver.Chrome(service=service)
 
 driver.get(url)
 
-time.sleep(5)
 try:
     sign_in = driver.find_element(By.LINK_TEXT, "Sign in")
     sign_in.click()
 
 
-    time.sleep(2)
+    time.sleep(20)
 
     input_email = driver.find_element(By.ID, "username")
     input_email.send_keys(MY_EMAIL)
@@ -37,3 +35,4 @@ try:
 
 finally:
     driver.quit()
+
