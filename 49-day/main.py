@@ -8,7 +8,7 @@ MY_EMAIL = ""
 MY_PASSWORD = ""
 
 
-url = "https://www.linkedin.com/jobs/search/?currentJobId=4071837289&geoId=103535056&keywords=python%20developer&origin=JOB_SEARCH_PAGE_LOCATION_SUGGESTION&refresh=true"
+url = "https://www.linkedin.com"
 
 
 
@@ -16,9 +16,11 @@ service = Service("/usr/local/bin/chromedriver")
 driver = webdriver.Chrome(service=service)
 
 driver.get(url)
+time.sleep(3)
 
 try:
-    sign_in = driver.find_element(By.LINK_TEXT, "Sign in")
+    sign_in = driver.find_element(By.XPATH, "/html/body/nav/div/a[2]")
+
     sign_in.click()
 
 
