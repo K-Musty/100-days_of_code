@@ -35,7 +35,7 @@ try:
 
     time.sleep(2)
 
-    jobs = driver.find_element(By.XPATH, "//*[@id='global-nav']/div/nav/ul/li[3]/a")
+    jobs = driver.find_element(By.CLASS_NAME, "t-12 break-words block t-black--light t-normal")
     jobs.click()
 
     search = driver.find_element(By.CLASS_NAME, "jobs-search-box__text-input")
@@ -48,8 +48,12 @@ try:
     input_job = driver.find_element(By.CLASS_NAME, "artdeco-text-input--input")
     input_job.send_keys(MY_NUMBER)
 
-    next = driver.find_element(By.ID, "ember781")
-    next.click()
+    next_next = driver.find_element(By.ID, "ember781")
+    next_next.click()
+
+    follow_button = driver.find_element(by=By.CLASS_NAME, value="follow")
+    follow_button.click()
+
     time.sleep(20)
 
 finally:
