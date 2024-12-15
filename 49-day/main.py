@@ -35,15 +35,17 @@ try:
 
     time.sleep(2)
 
-    jobs = driver.find_element(By.CLASS_NAME, "t-12 break-words block t-black--light t-normal")
-    jobs.click()
-
-    search = driver.find_element(By.CLASS_NAME, "jobs-search-box__text-input")
+    search = driver.find_element(By.CLASS_NAME, "search-global-typeahead__input")
     search.send_keys("python developer")
     search.send_keys(Keys.ENTER)
 
-    jobs_apply = driver.find_element(By.CLASS_NAME, "jobs-apply-button")
+
+    jobs_apply = driver.find_element(By.CLASS_NAME, "afaFOTlZPsCzjvRLucMiKLrwEMAMHRDLkDjhg")
     jobs_apply.click()
+
+
+
+    # job_listings = driver.find_elements(BY.CSS_SELECTOR, ".job-card-container--clickable")
 
     input_job = driver.find_element(By.CLASS_NAME, "artdeco-text-input--input")
     input_job.send_keys(MY_NUMBER)
