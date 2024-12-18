@@ -13,5 +13,13 @@ driver.get("https://tinder.com/")
 login = driver.find_element(By.LINK_TEXT, "Log in")
 login.click()
 
+facebook = driver.find_element(By.CLASS_NAME, "Mend(a)")
+facebook.click()
 
+email = driver.find_element(By.ID, "email")
+email.send_keys(EMAIL)
+
+password = driver.find_element(By.ID, "pass")
+password.send_keys(PASSWORD)
+password.click()
 
