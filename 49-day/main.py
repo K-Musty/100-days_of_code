@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
+from selenium.common.exceptions import NoSuchElementException
 import time
 
 MY_EMAIL = ""
@@ -17,6 +18,8 @@ driver = webdriver.Chrome(service=service)
 
 driver.get(url)
 time.sleep(3)
+
+
 
 try:
     sign_in = driver.find_element(By.LINK_TEXT, "Sign in")
@@ -39,24 +42,36 @@ try:
     search.send_keys("python developer")
     search.send_keys(Keys.ENTER)
 
+    job_listings = driver.find_elements(By.CSS_SELECTOR, ".job-card-container--clickable")
+    for job in job_listings:
+        job.click()
+        time.sleep(2)
 
-    jobs_apply = driver.find_element(By.CLASS_NAME, "afaFOTlZPsCzjvRLucMiKLrwEMAMHRDLkDjhg")
-    jobs_apply.click()
+        try :
+
+            jobs_apply = driver.find_element(By.CLASS_NAME, "afaFOTlZPsCzjvRLucMiKLrwEMAMHRDLkDjhg")
+            jobs_apply.click()
 
 
+            input_job = driver.find_element(By.CLASS_NAME, "artdeco-text-input--input")
+            if input_job.text == "" :
+                input_job.send_keys(MY_NUMBER)
 
-    # job_listings = driver.find_elements(BY.CSS_SELECTOR, ".job-card-container--clickable")
+            next_next = driver.find_element(By.ID, "ember781")
+            next_next.click()
 
-    input_job = driver.find_element(By.CLASS_NAME, "artdeco-text-input--input")
-    input_job.send_keys(MY_NUMBER)
+            follow_button = driver.find_element(by=By.CLASS_NAME, value="follow")
+            follow_button.click()
 
-    next_next = driver.find_element(By.ID, "ember781")
-    next_next.click()
+            time.sleep(20)
 
-    follow_button = driver.find_element(by=By.CLASS_NAME, value="follow")
-    follow_button.click()
 
-    time.sleep(20)
+        except NoSuchElementException:
+
+            print("No application button, skipped.")
+
+            continue
+
 
 finally:
     driver.quit()
