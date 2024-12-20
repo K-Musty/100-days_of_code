@@ -10,7 +10,12 @@ driver = webdriver.Chrome(service=service)
 
 driver.get("https://tinder.com/")
 
-login = driver.find_element(By.LINK_TEXT, "Log in")
+EMAIL = ""
+PASSWORD = ""
+
+
+
+login = driver.find_element(By.X_PATH, "//*[@id='q2098069830']/div/div[1]/div/div/div/main/div/div[2]/div/div[3]/div/div/button[2]/div[2]/div[2]")
 login.click()
 
 facebook = driver.find_element(By.CLASS_NAME, "Mend(a)")
@@ -22,4 +27,5 @@ email.send_keys(EMAIL)
 password = driver.find_element(By.ID, "pass")
 password.send_keys(PASSWORD)
 password.click()
+
 
