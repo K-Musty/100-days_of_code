@@ -60,10 +60,21 @@ try:
             next_next = driver.find_element(By.ID, "ember781")
             next_next.click()
 
-            follow_button = driver.find_element(by=By.CLASS_NAME, value="follow")
-            follow_button.click()
+            # follow_button = driver.find_element(by=By.CLASS_NAME, value="follow")
+            # follow_button.click()
+            submit_button = driver.find_element(By.CLASS_NAME,"follow")
 
             time.sleep(20)
+            if submit_button.get_attribute("data-control-name") == "continue_unify":
+                close_button = driver.find_element(By.CLASS_NAME,"artdeco-modal__dismiss")
+                close_button.click()
+                time.sleep(2)
+                discard_button = driver.find_elements(By.CLASS_NAME,"artdeco-modal__confirm-dialog-btn")[1]
+                discard_button.click()
+                continue
+            else:
+                submit_button.click()
+
 
 
         except NoSuchElementException:
