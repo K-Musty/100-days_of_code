@@ -2,7 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-# from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.keys import Keys
 import time
 
 service = Service("/usr/local/bin/chromedriver")
@@ -38,9 +38,11 @@ email.send_keys(EMAIL)
 
 password = driver.find_element(By.ID, "pass")
 password.send_keys(PASSWORD)
-password.click()
+password.send_keys(Keys.ENTER)
 
+# Switching windows back
 driver.switch_to.window(base_window)
+print(driver.title)
 
 
 
