@@ -26,12 +26,21 @@ time.sleep(3)
 facebook = driver.find_element(By.XPATH, "//*[@id='q369688754']/div/div/div/div[1]/div/div/div[2]/div[2]/span/div[2]/button/div[2]/div[2]/div[2]/div/div")
 facebook.click()
 time.sleep(3)
+
+# Switching windows
+base_window = driver.window_handles[0]
+fb_window = driver.window_handles[1]
+driver.switch_to.window(fb_window)
+print(driver.title)
+
 email = driver.find_element(By.ID, "email")
 email.send_keys(EMAIL)
 
 password = driver.find_element(By.ID, "pass")
 password.send_keys(PASSWORD)
 password.click()
+
+driver.switch_to.window(base_window)
 
 
 
