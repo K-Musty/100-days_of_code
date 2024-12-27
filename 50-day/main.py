@@ -44,5 +44,16 @@ password.send_keys(Keys.ENTER)
 driver.switch_to.window(base_window)
 print(driver.title)
 
+location = driver.find_element(By.XPATH, value='/html/body/div[2]/main/div/div/div/div[3]/button[1]')
+location.click()
+time.sleep(5)
+
+notification = driver.find_element(By.XPATH, value='/html/body/div[2]/main/div/div/div/div[3]/button[2]')
+notification.click()
+time.sleep(5)
+
+night_mode = driver.find_element(By.XPATH, value='/html/body/div[2]/main/div/div[2]/button')
+night_mode.click()
+
 
 
