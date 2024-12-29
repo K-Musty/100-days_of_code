@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
 import time
 
 service = Service("/usr/local/bin/chromedriver")
@@ -55,5 +56,25 @@ time.sleep(5)
 night_mode = driver.find_element(By.XPATH, value='/html/body/div[2]/main/div/div[2]/button')
 night_mode.click()
 
+for num in range(101):
 
+    time.sleep(3)
+
+    try:
+        like = driver.find_element(By.XPATH, "")
+        like.click()
+
+    except ElementClickInterceptedException:
+        try:
+            match_popup = driver.find_element(By.CSS_SELECTOR,".itsAMatch a")
+            match_popup.click()
+
+        except NoSuchElementException:
+            time.sleep(3)
+
+        else:
+            driver.quit()
+            break
+
+driver.quit()
 
