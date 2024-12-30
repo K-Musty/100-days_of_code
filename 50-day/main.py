@@ -63,11 +63,13 @@ for num in range(101):
     try:
         like = driver.find_element(By.XPATH, "")
         like.click()
+        print("Liked !!!!!")
 
     except ElementClickInterceptedException:
         try:
             match_popup = driver.find_element(By.CSS_SELECTOR,".itsAMatch a")
             match_popup.click()
+            print("A Match !!!!")
 
         except NoSuchElementException:
             time.sleep(3)
