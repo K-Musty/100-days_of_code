@@ -1,23 +1,24 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
+# from selenium.webdriver.common.by import By
 
 PROMISED_DOWN = 150
 PROMISED_UP = 10
 
-service = Service("usr/local/bin/chromedriver")
-driver = webdriver.Chrome(service=service)
+service_path = Service("usr/local/bin/chromedriver")
+
 # Twitter (X) Login
 X_EMAIL = ""
 X_PASSWORD = ""
-driver.get("https://www.x.com")
+# driver.get("https://www.x.com")
 
 
 class InternetSpeedTwitterBot:
 
-    def __init__(self, down, up):
-        self.down = down
-        self.up = up
+    def __init__(self, service):
+        self.service = webdriver.Chrome(service=service)
+        self.down = 0
+        self.up = 0
 
 
     def get_internet_speed(self):
@@ -28,6 +29,6 @@ class InternetSpeedTwitterBot:
         pass
 
 
-bot = InternetSpeedTwitterBot(up=PROMISED_UP, down=PROMISED_DOWN)
+bot = InternetSpeedTwitterBot(service_path)
 internet_speed = bot.get_internet_speed()
 tweet_at = bot.tweet_at_provider()
