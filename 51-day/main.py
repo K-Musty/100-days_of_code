@@ -27,6 +27,9 @@ class InternetSpeedTwitterBot:
     def get_internet_speed(self):
         self.driver.get("https://www.speedtest.net/")
 
+        accept_button = self.driver.find_element(By.ID, "_evidon-banner-acceptbutton")
+        accept_button.click()
+
         time.sleep(5)
         start = self.driver.find_element(By.CLASS_NAME, "class-text")
         start.click()
