@@ -42,7 +42,7 @@ class InternetSpeedTwitterBot:
 
     def tweet_at_provider(self):
         self.driver.get("https://www.x.com")
-        pass
+
 
 
 bot = InternetSpeedTwitterBot(service=service_path)
