@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 PROMISED_DOWN = 150
 PROMISED_UP = 10
 
-service_path = Service("usr/local/bin/chromedriver")
+service_path = Service("/usr/local/bin/chromedriver")
 
 # Twitter (X) Login
 X_EMAIL = ""
@@ -41,9 +41,10 @@ class InternetSpeedTwitterBot:
 
 
     def tweet_at_provider(self):
+        self.driver.get("https://www.x.com")
         pass
 
 
-bot = InternetSpeedTwitterBot(service_path)
+bot = InternetSpeedTwitterBot(service=service_path)
 internet_speed = bot.get_internet_speed()
 tweet_at = bot.tweet_at_provider()
