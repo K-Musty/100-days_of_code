@@ -3,6 +3,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 PROMISED_DOWN = 150
 PROMISED_UP = 10
@@ -42,6 +43,13 @@ class InternetSpeedTwitterBot:
 
     def tweet_at_provider(self):
         self.driver.get("https://www.x.com")
+
+        login_button = self.driver.find_element(By.XPATH, "//*[@id='react-root']/div/div/div[2]/main/div/div/div[1]/div[1]/div/div[3]/div[4]/a/div/span/span")
+        login_button.click()
+
+        input_email = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[4]/label/div/div[2]/div/input")
+        input_email.send_keys(X_EMAIL)
+        input_email.send_keys(Keys.ENTER)
 
 
 
