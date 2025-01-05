@@ -51,6 +51,8 @@ class InternetSpeedTwitterBot:
         input_email.send_keys(X_EMAIL)
         input_email.send_keys(Keys.ENTER)
 
+        return f"pass"
+
 
 
 bot = InternetSpeedTwitterBot(service=service_path)
