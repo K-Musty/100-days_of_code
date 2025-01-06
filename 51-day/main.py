@@ -12,6 +12,7 @@ service_path = Service("/usr/local/bin/chromedriver")
 
 # Twitter (X) Login
 X_EMAIL = ""
+X_USERNAME = "montana70463"
 X_PASSWORD = ""
 
 
@@ -48,6 +49,10 @@ class InternetSpeedTwitterBot:
         input_email = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[4]/label/div/div[2]/div/input")
         input_email.send_keys(X_EMAIL)
         input_email.send_keys(Keys.ENTER)
+
+        input_username = self.driver.find_element(By.XPATH, "")
+        input_username.send_keys(X_USERNAME)
+
 
         # password
 
