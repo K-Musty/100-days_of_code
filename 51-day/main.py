@@ -15,8 +15,6 @@ X_EMAIL = ""
 X_PASSWORD = ""
 
 
-
-
 class InternetSpeedTwitterBot:
 
     def __init__(self, service):
@@ -54,7 +52,6 @@ class InternetSpeedTwitterBot:
         # password
 
         return f"pass"
-
 
 
 bot = InternetSpeedTwitterBot(service=service_path)
