@@ -55,6 +55,11 @@ class InternetSpeedTwitterBot:
 
 
         # password
+        input_password = self.driver.find_element(By.XPATH, "")
+        input_password.send_keys(X_PASSWORD)
+        input_password.send_keys(Keys.ENTER)
+
+        # Tweet
 
         return f"pass"
 
