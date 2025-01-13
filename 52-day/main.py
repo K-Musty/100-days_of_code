@@ -12,4 +12,5 @@ url = ""
 service = Service(url)
 
 driver = webdriver.chrome(service=service)
+driver.findelement()
 driver.quit()
