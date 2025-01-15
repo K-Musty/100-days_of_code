@@ -60,7 +60,17 @@ class InternetSpeedTwitterBot:
         input_password.send_keys(Keys.ENTER)
 
         # Tweet
+        time.sleep(5)
+        tweet_compose = self.driver.find_element(By.XPATH, value="")
+        tweet = f"Hey Internet Provider, why is my internet speed {self.down}down/{self.up}up when I pay for {PROMISED_DOWN}down/{PROMISED_UP}up?"
+        tweet_compose.send_keys(tweet)
 
+        time.sleep(3)
+
+        tweet_button = self.driver.find_element(By.XPATH, value="")
+        tweet_button.click()
+
+        time.sleep(2)
         return f"pass"
 
 
