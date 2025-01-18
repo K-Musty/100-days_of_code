@@ -7,7 +7,7 @@ from selenium.webdriver.common.key import Key
 INSTA_UNAME = ""
 INSTA_PASSWORD = ""
 
-service = Service("/usr/local/bin/chromedriver")
+service_path = Service("/usr/local/bin/chromedriver")
 
 class InstaFollower:
 
@@ -23,4 +23,7 @@ class InstaFollower:
     def follow():
         pass
 
-
+bot = InstaBot(service=service_path)
+login = bot.login()
+followers = bot.find_followers()
+follow = bot.follow()
