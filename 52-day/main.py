@@ -9,10 +9,18 @@ INSTA_PASSWORD = ""
 
 service = Service("/usr/local/bin/chromedriver")
 
-driver = webdriver.chrome(service=service)
-url = ""
-driver.get(url)
+class InstaFollower:
 
-driver.find_element(By.XPATH, value="")
+    def __init__(self, service):
+        self.driver = webdriver.Chrome(service=service)
 
-driver.quit()
+    def login():
+        pass
+
+    def find_followers():
+        pass
+
+    def follow():
+        pass
+
+
