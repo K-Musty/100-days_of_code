@@ -24,6 +24,6 @@ class InstaFollower:
         pass
 
 bot = InstaBot(service=service_path)
-login = bot.login()
-followers = bot.find_followers()
-follow = bot.follow()
+bot.login()
+bot.find_followers()
+bot.follow()
