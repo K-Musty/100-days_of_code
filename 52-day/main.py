@@ -6,8 +6,10 @@ from selenium.webdriver.common.key import Key
 
 INSTA_UNAME = ""
 INSTA_PASSWORD = ""
+url = "https//:www.instagram.com"
 
 service_path = Service("/usr/local/bin/chromedriver")
+
 
 class InstaFollower:
 
