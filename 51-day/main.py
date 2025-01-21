@@ -1,5 +1,4 @@
 import time
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -54,7 +53,7 @@ class InternetSpeedTwitterBot:
         input_username.send_keys(X_USERNAME)
 
 
-        # password
+        # Password
         input_password = self.driver.find_element(By.XPATH, "")
         input_password.send_keys(X_PASSWORD)
         input_password.send_keys(Keys.ENTER)
