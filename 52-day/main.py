@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.key import Key
+import time
 
 INSTA_UNAME = ""
 INSTA_PASSWORD = ""
