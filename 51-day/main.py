@@ -49,25 +49,29 @@ class InternetSpeedTwitterBot:
         input_email.send_keys(X_EMAIL)
         input_email.send_keys(Keys.ENTER)
 
-        input_username = self.driver.find_element(By.XPATH, "")
+        input_username = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/label/div/div[2]/div/input")
         input_username.send_keys(X_USERNAME)
 
 
         # Password
-        input_password = self.driver.find_element(By.XPATH, "")
+        input_password = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input")
         input_password.send_keys(X_PASSWORD)
         input_password.send_keys(Keys.ENTER)
 
-        # Tweet
+        # Post
+        click_post = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div[2]/header/div/div/div/div[1]/div[3]/a/div")
+        click_post.click()
+
         time.sleep(5)
-        tweet_compose = self.driver.find_element(By.XPATH, value="")
+        post_compose = self.driver.find_element(By.XPATH, value="/html/body/div[1]/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div/div[3]/div[2]/div[1]/div/div/div/div[1]/div[2]/div/div/div/div/div/div/div/div/div/div/div/div/div[1]/div/div/div/div/div/div[2]/div/div/div/div")
         tweet = f"Hey Internet Provider, why is my internet speed {self.down}down/{self.up}up when I pay for {PROMISED_DOWN}down/{PROMISED_UP}up?"
-        tweet_compose.send_keys(tweet)
+
+        post_compose.send_keys(tweet)
 
         time.sleep(3)
 
-        tweet_button = self.driver.find_element(By.XPATH, value="")
-        tweet_button.click()
+        post_button = self.driver.find_element(By.XPATH, value="/html/body/div[1]/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div/div[3]/div[2]/div[1]/div/div/div/div[2]/div[2]/div/div/div/button[2]")
+        post_button.click()
 
         time.sleep(2)
         return f"pass"
