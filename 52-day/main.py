@@ -1,4 +1,4 @@
-# Instagram Follower Bot🤖 
+# Instagram Follower Bot🤖
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -17,16 +17,16 @@ class InstaFollower:
     def __init__(self, service):
         self.driver = webdriver.Chrome(service=service)
 
-    def login():
+    def login(self):
         pass
 
-    def find_followers():
+    def find_followers(self):
         pass
 
-    def follow():
+    def follow(self):
         pass
 
-bot = InstaBot(service=service_path)
+bot = InstaFollower(service=service_path)
 bot.login()
 bot.find_followers()
 bot.follow()
