@@ -5,9 +5,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
-INSTA_UNAME = ""
-INSTA_PASSWORD = ""
+INSTA_UNAME = "johnnymont2255"
+INSTA_PASSWORD = "07046989916kallikadi"
 url = "https://www.instagram.com/accounts/login/"
+TARGET_ACCOUNT = ""
 
 service_path = Service("/usr/local/bin/chromedriver")
 
@@ -19,7 +20,6 @@ class InstaFollower:
 
     def login(self):
         self.driver.get(url=url)
-        self.driver.find_element(By.XPATH, "/html/body/div[5]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]")
         time.sleep(5)
 
         username = self.driver.find_element(By.XPATH, "//*[@id='loginForm']/div[1]/div[1]/div/label/input")
@@ -32,7 +32,8 @@ class InstaFollower:
 
 
     def find_followers(self):
-        pass
+        self.driver.get(url=f"https://www.instagram.com/{TARGET_ACCOUNT}/followers/")
+        time.sleep(5)
 
     def follow(self):
         pass
