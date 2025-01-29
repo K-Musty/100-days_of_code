@@ -36,6 +36,8 @@ class InstaFollower:
         time.sleep(5)
 
     def follow(self):
+        self.driver.find_elements(By.XPATH, "")
+        time.sleep(5)
         pass
 
 bot = InstaFollower(service=service_path)
