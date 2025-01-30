@@ -8,7 +8,7 @@ import time
 INSTA_UNAME = ""
 INSTA_PASSWORD = ""
 url = "https://www.instagram.com/accounts/login/"
-TARGET_ACCOUNT = ""
+TARGET_ACCOUNT = "ChefSteps"
 
 service_path = Service("/usr/local/bin/chromedriver")
 
@@ -34,6 +34,7 @@ class InstaFollower:
     def find_followers(self):
         self.driver.get(url=f"https://www.instagram.com/{TARGET_ACCOUNT}/followers/")
         time.sleep(5)
+        # Scrolling feature
 
     def follow(self):
         self.driver.find_elements(By.XPATH, "")
