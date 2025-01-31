@@ -33,6 +33,9 @@ class InstaFollower:
 
     def find_followers(self):
         self.driver.get(url=f"https://www.instagram.com/{TARGET_ACCOUNT}/followers/")
+        followers = self.driver.find_element(By.XPATH, "")
+        self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", followers)
+
         time.sleep(5)
         # Scrolling feature
 
