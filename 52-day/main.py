@@ -5,8 +5,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
-INSTA_UNAME = ""
-INSTA_PASSWORD = ""
+INSTA_UNAME = "johnnymont2255"
+INSTA_PASSWORD = "07046989916kallikadi"
 url = "https://www.instagram.com/accounts/login/"
 TARGET_ACCOUNT = "ChefSteps"
 
@@ -32,12 +32,22 @@ class InstaFollower:
 
 
     def find_followers(self):
-        self.driver.get(url=f"https://www.instagram.com/{TARGET_ACCOUNT}/followers/")
-        followers = self.driver.find_element(By.XPATH, "")
-        self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", followers)
+        time.sleep(3)
+        self.driver.get(url=f"https://www.instagram.com/{TARGET_ACCOUNT}")
+
+        time.sleep(6)
+
+        followers = self.driver.find_element(By.XPATH,'/html/body/div[1]/div/div/div[2]/div/div/div[1]/div[2]/div/div[1]/section/main/div/header/section[3]/ul/li[2]/div/a')
+        followers.click()
+
+        time.sleep(4)
+        scroll = self.driver.find_element(By.CSS_SELECTOR, "div[roll=scroll]")
 
         time.sleep(5)
-        # Scrolling feature
+        for i in range(11):
+
+            self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scroll)
+            time.sleep(3)
 
     def follow(self):
         self.driver.find_elements(By.XPATH, "")
