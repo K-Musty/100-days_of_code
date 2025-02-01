@@ -3,10 +3,11 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import ElementClickInterceptedException
 import time
 
 INSTA_UNAME = "johnnymont2255"
-INSTA_PASSWORD = "07046989916kallikadi"
+INSTA_PASSWORD = ""
 url = "https://www.instagram.com/accounts/login/"
 TARGET_ACCOUNT = "ChefSteps"
 
@@ -50,8 +51,15 @@ class InstaFollower:
             time.sleep(3)
 
     def follow(self):
-        self.driver.find_elements(By.XPATH, "")
-        time.sleep(5)
+        buttons = self.driver.find_elements(By.XPATH, "/html/body/div[6]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div[1]/div/")
+        for button in buttons:
+            try:
+                button.click()
+                time.sleep(1)
+            except  ElementClickInterceptedException:
+                cancel_button = self.driver.find_element(By.XPATH, "/html/body/div[7]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[1]/div/div[3]/div/button")
+                cancel_button.click()
+                time.sleep(5)
         pass
 
 bot = InstaFollower(service=service_path)
