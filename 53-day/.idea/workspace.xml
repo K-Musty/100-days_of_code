@@ -15,6 +15,8 @@
       <change beforePath="$PROJECT_DIR$/../46-day/time-machine-playlist/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../46-day/time-machine-playlist/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../47-day/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../47-day/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../50-day/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../50-day/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +36,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/kmusty/Desktop/practice/100-days_of_code/53-day"
@@ -42,7 +45,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d7ad00fb9fc3-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23726.102" />
+        <option value="bundled-python-sdk-1b1018131e27-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.180" />
       </set>
     </attachedChunks>
   </component>
