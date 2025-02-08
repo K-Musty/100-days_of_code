@@ -15,3 +15,26 @@ headers = {
 
 response = requests.get(url=base_url, headers=headers)
 soup = BeautifulSoup(response.text, "html.parser")
+
+prices = []
+all_links = []
+
+
+links = soup.find_all("a", {"class": "property-card-link"})
+
+for link in links:
+    yes = link.get('href')
+    all_links.append(yes)
+
+find_addresses = soup.find_all(name="address")
+
+addresses = [adds.text for adds in find_addresses]
+find_price = soup.find_all("div", {"class": "PropertyCardWrapper__StyledPriceGridContainer-srp-8-109-1__sc-16e8gqd-0 QNjBw"})
+for price in find_price:
+    price_text = price.text
+    stripped = price_text.strip("+/mo")
+    prices.append(stripped)
+
+print(prices)
+print(all_links)
+print(addresses)
