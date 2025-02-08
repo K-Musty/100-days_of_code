@@ -15,18 +15,3 @@ headers = {
 
 response = requests.get(url=base_url, headers=headers)
 soup = BeautifulSoup(response.text, "html.parser")
-addresses = []
-all_links = []
-prices = []
-# print(soup)
-listings = soup.find_all('li', class_='ListItem-c11n-8-107-0__sc-13rwu5a-0 StyledListCardWrapper-srp-8-107-0__sc-wtsrtn-0 dAZKuw xoFGK')
-# links = soup.find_all('a', class_='StyledPropertyCardDataArea-c11n-8-107-0__sc-10i1r6-0 iwOFcv property-card-link')
-# amounts = soup.find_all('span', class_="Text-c11n-8-107-0__sc-aiai24-0 PropertyCardInventoryBox__PriceText-srp-8-107-0__sc-1jotqb7-3 eawGuS kgaGKJ")
-
-for listing in listings:
-    print(listing.prettify())
-    url = listing.getText("url")
-    all_links.append(url)
-    name = listing.getText("name")
-    addresses.append(name)
-print(all_links)
