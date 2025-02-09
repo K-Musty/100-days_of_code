@@ -40,3 +40,9 @@ for price in find_price:
 print(prices)
 print(all_links)
 print(addresses)
+
+# Selenium form automation
+driver = webdriver.Chrome("usr/bin/local/chromedriver")
+
+driver.get(FORM_URL)
+
