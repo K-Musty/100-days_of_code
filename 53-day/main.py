@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
-import selenium
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 
 
 FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfHIGjkwmjrfMmf9R49C-dOSkqYukzaWwA6hOgGIYYDgXgigQ/viewform?usp=header"
