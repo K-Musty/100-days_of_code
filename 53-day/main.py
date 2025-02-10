@@ -1,3 +1,5 @@
+import time
+
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -37,12 +39,28 @@ for price in find_price:
     stripped = price_text.strip("+/mo")
     prices.append(stripped)
 
-print(prices)
-print(all_links)
-print(addresses)
 
 # Selenium form automation
-driver = webdriver.Chrome("usr/bin/local/chromedriver")
+service = Service("/usr/local/bin/chromedriver")
+driver = webdriver.Chrome(service=service)
 
-driver.get(FORM_URL)
+
+
+for item in range(len(prices)):
+    driver.get(FORM_URL)
+    time.sleep(4)
+    form_input = driver.find_elements(By.CLASS_NAME,"Xb9hP")
+
+    form_input[0].send_keys(addresses[item])
+    form_input[1].send_keys(prices[item])
+    form_input[3].send_keys(links[item])
+
+    time.sleep(3)
+
+    submit_button = driver.find_element(By.XPATH, "/html/body/div/div[3]/form/div[2]/div/div[3]/div[1]/div[1]/div/span")
+    next_session = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[1]/div/div[4]/a")
+    time.sleep(3)
+
+driver.quit()
+
 
