@@ -43,23 +43,29 @@ for price in find_price:
 # Selenium form automation
 service = Service("/usr/local/bin/chromedriver")
 driver = webdriver.Chrome(service=service)
-
+# print(addresses)
 
 
 for item in range(len(prices)):
     driver.get(FORM_URL)
-    time.sleep(4)
-    form_input = driver.find_elements(By.CLASS_NAME,"Xb9hP")
+    time.sleep(6)
 
-    form_input[0].send_keys(addresses[item])
-    form_input[1].send_keys(prices[item])
-    form_input[3].send_keys(links[item])
+    address_input = driver.find_element(By.XPATH, "//input[@class='whsOnd zHQkBf' and @aria-labelledby='i1 i4']")
+    price_input = driver.find_element(By.XPATH, "//input[@class='whsOnd zHQkBf' and @aria-labelledby='i6 i9']")
+    link_input = driver.find_element(By.XPATH, "//input[@class='whsOnd zHQkBf' and @aria-labelledby='i11 i14']")
+
+    time.sleep(6)
+
+    address_input.send_keys(addresses[item])
+    price_input.send_keys(prices[item])
+    link_input.send_keys(all_links[item])
 
     time.sleep(3)
 
-    submit_button = driver.find_element(By.XPATH, "/html/body/div/div[3]/form/div[2]/div/div[3]/div[1]/div[1]/div/span")
-    next_session = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[1]/div/div[4]/a")
-    time.sleep(3)
+    submit_button = driver.find_element(By.XPATH, "//span[contains(text(), 'Submit')]")
+    submit_button.click()
+
+time.sleep(3)
 
 driver.quit()
 
