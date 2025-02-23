@@ -16,7 +16,12 @@
       <change beforePath="$PROJECT_DIR$/../47-day/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../47-day/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../50-day/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../50-day/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../53-day/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../53-day/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-templating/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog-templating/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-templating/post.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog-templating/post.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-templating/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog-templating/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-templating/templates/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog-templating/templates/post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +50,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.server.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;

@@ -12,18 +12,14 @@
         <div class="title"><h1>My Blog</h1></div>
     </div>
     <div class="content">
+        {% for post in posts %}
         <div class="card">
-            <h2>Just a blog post</h2>
-            <p class="text">Lorem ipsum dolor sit </p>
-            <a href="#">Read</a>
+            <h2>{{ post.title }}</h2>
+            <p class="text">{{ post.subtitle }}</p>
+            <a href="{{  url_for('blog_post', num=post.post_id) }}">Read</a>
+
         </div>
-    </div>
-    <div class="content">
-        <div class="card">
-            <h2>Another blog post</h2>
-            <p class="text">Lorem ipsum dolor sit </p>
-            <a href="#">Read</a>
-        </div>
+        {% endfor %}
     </div>
 </div>
 </body>
