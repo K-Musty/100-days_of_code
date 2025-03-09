@@ -4,3 +4,6 @@
 ### Challenges
 - Using pre built bootsrap card
 - Bootstrap Layout Exercise
+- Bootstrap Components
+- TinDog Project
+
