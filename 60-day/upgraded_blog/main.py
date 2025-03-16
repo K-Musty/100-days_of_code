@@ -13,15 +13,15 @@ for i in all_posts:
     posts.append(post)
 
 
-@app.route("/index.html")
+@app.route("/index")
 def home():
     return render_template("index.html", posts=all_posts)
 
-@app.route("/about.html")
+@app.route("/about")
 def about():
     return render_template("about.html")
 
-@app.route("/post.html/<int:num>")
+@app.route("/post/<int:num>")
 def show_post(num):
     requested_blog = None
     for post in posts:
@@ -30,18 +30,20 @@ def show_post(num):
     return render_template("post.html", blog_post=requested_blog)
 
 
-@app.route("/contact.html")
+@app.route("/contact", methods=["POST" , "GET"])
 def contact():
-    return render_template("contact.html")
+    status = False
+    message = None
+    if request.method == "POST":
+        data = request.form
+        print(data["name"])
+        print(data["email"])
+        print(data["phone"])
+        print(data["message"])
+        message =  "Successfully sent your message"
+        status = True
 
-@app.route("/form-entry", methods=["POST"])
-def receive_data():
-    data = request.form
-    print(data["name"])
-    print(data["email"])
-    print(data["phone"])
-    print(data["message"])
-    return "<h1> Successful !!!!! </h1>"
+    return render_template("contact.html", message=message, status=status)
 
 if __name__ == "__main__":
     app.run(debug=True)

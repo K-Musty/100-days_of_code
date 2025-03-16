@@ -4,7 +4,11 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
+                    {% if status == True %}
+                    <h1>{{ message }}</h1>
+                    {% else %}
                     <h1>Contact Us</h1>
+                    {% endif %}
                     <span class="subheading">Fill below to get in touch with us</span>
                 </div>
             </div>
@@ -25,7 +29,7 @@
                     <!-- To make this form functional, sign up at-->
                     <!-- https://startbootstrap.com/solution/contact-forms-->
                     <!-- to get an API token!-->
-                    <form id="contactForm" action="{{ url_for('receive_data') }}" method="post">
+                    <form id="contactForm" action="{{ url_for('contact') }}" method="post">
                         <div class="form-floating">
                             <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                             <label for="name">Name</label>
@@ -66,7 +70,7 @@
                         <!-- an error submitting the form-->
                         <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                         <!-- Submit Button-->
-                        <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Send</button>
+                        <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Send</button>
                     </form>
                 </div>
             </div>
