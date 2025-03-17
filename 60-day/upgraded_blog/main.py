@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request
 import requests
+import smtplib
 from post import Post
 
 URL = "https://api.npoint.io/bd5493b8744a52d09b8b"
+MY_EMAIL = ""
+PASSWORD = ""
 
 response = requests.get(url=URL)
 all_posts = response.json()
@@ -42,7 +45,13 @@ def contact():
         print(data["message"])
         message =  "Successfully sent your message"
         status = True
-
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as connection:
+            connection.login(user=MY_EMAIL, password=PASSWORD)
+            connection.sendmail(
+                from_addr=MY_EMAIL,
+                to_addrs=data["email"],
+                msg=f"Subject: Awesome Blog \n\n\n Dear {data['name']}, \n\n Welcome to our blog site, Thank you for contacting us, your message: \n\n \'{data['message']}\' \n\n has been received"
+            )
     return render_template("contact.html", message=message, status=status)
 
 if __name__ == "__main__":
