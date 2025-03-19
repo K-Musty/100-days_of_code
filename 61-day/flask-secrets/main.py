@@ -1,16 +1,17 @@
 from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, PasswordField
-from wtforms.validators import DataRequired
+from wtforms import StringField, EmailField, PasswordField, SubmitField
+from wtforms.validators import DataRequired, Email, Length
 
 app = Flask(__name__)
 
 app.secret_key = ""
 
 class MyForm(FlaskForm):
-    name = StringField('name', [DataRequired()])
-    email = EmailField('email', [DataRequired()])
-    password = PasswordField('password', [DataRequired()])
+    name = StringField('Name', [DataRequired()])
+    email = EmailField('Email', [DataRequired(), Email()])
+    password = PasswordField('Password', [DataRequired(), Length(min=8)])
+    submit = SubmitField("Log in")
 
 
 
@@ -18,11 +19,14 @@ class MyForm(FlaskForm):
 def home():
     return render_template('index.html')
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST', 'DELETE'])
 def login():
     form = MyForm()
-    # if form.validate_on_submit():
-    #     return redirect("/Success")
+    if form.validate_on_submit():
+        if form.email.data == "admin@email.com" and form.password.data == "12345678":
+            return render_template('success.html')
+        else:
+            return render_template('denied.html')
     return render_template('login.html', form=form)
 
 

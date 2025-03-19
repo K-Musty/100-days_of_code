@@ -10,10 +10,10 @@
         <!-- This is where our form will go. -->
 			<form action="{{ url_for('login') }} " method="POST">
 				{{ form.csrf_token }}
-				{{ form.name.label }} {{ form.name(size=30) }}
-				{{ form.email.label}} {{ form.email(size=30) }}
-				{{ form.password.label}} {{ form.password(size=30) }}
-				<input type="submit" value="GO">
+				{{ form.name.label }} <br> {{ form.name(size=30) }} <br>
+				{{ form.email.label}} <br> {{ form.email(size=30) }} <br>
+				{{ form.password.label}} <br> {{ form.password(size=30) }} <br>
+				{{ form.submit }}
 			</form>
         </div>
 	</body>
