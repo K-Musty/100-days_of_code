@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+    <style>
+        {% block styling %}
+        body {
+            background: purple;
+        }
+        {% endblock %}
+</style>
+</head>
+<body>
+	{% block content %} {% endblock %}
+</body>
+</html>

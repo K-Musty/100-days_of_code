@@ -1,11 +1,11 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, Length
 
 app = Flask(__name__)
 
-app.secret_key = ""
+app.secret_key = "11111111111111111111"
 
 class MyForm(FlaskForm):
     name = StringField('Name', [DataRequired()])
