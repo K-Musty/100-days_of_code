@@ -7,7 +7,7 @@ from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 Bootstrap(app)
 
-app.secret_key = "84884848448484848488884848488484884848"
+app.secret_key = ""
 
 class MyForm(FlaskForm):
     name = StringField('Name', [DataRequired()])
