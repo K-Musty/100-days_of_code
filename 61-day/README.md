@@ -10,4 +10,3 @@
 - Add Validation to Forms with Flask-WTF
 - Inherit Templates using Jinja2
 - Use Flask-Bootstrap as an Inherited Template
-
