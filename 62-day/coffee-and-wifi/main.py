@@ -15,9 +15,9 @@ class CafeForm(FlaskForm):
     location = URLField('location', validators=[DataRequired(), URL(require_tld=True)])
     open_time = StringField('Opening time e.g. 8am', validators=[DataRequired()])
     close_time = StringField('Closing time e.g. 9:30pm', validators=[DataRequired()])
-    coffee_rating = SelectField(label='Coffee Rating', choices=[('', '☕️'), ('', '☕️☕️'), ('', '☕️☕️☕️'), ('', '☕️☕️☕️☕️'), ('', '☕️☕️☕️☕️☕️')  ])
-    wifi_rating = SelectField(label='Wifi Rating', choices=[('', '💪'), ('', '💪💪'), ('', '💪💪💪'), ('', '💪💪💪💪'), ('', '💪💪💪💪💪')  ])
-    power_rating = SelectField(label='Power Rating', choices=[('', '🔌'), ('', '🔌🔌️'), ('', '🔌🔌🔌'), ('', '🔌🔌🔌🔌'), ('', '🔌🔌🔌🔌🔌')  ])
+    coffee_rating = SelectField(label='Coffee Rating', choices=[('☕️', '☕️'), ('☕️☕️', '☕️☕️'), ('☕️☕️☕️', '☕️☕️☕️'), ('☕️☕️☕️☕️', '☕️☕️☕️☕️'), ('☕️☕️☕️☕️☕️', '☕️☕️☕️☕️☕️')  ])
+    wifi_rating = SelectField(label='Wifi Rating', choices=[('💪', '💪'), ('💪💪', '💪💪'), ('💪💪💪', '💪💪💪'), ('💪💪💪💪', '💪💪💪💪'), ('💪💪💪💪💪', '💪💪💪💪💪')  ])
+    power_rating = SelectField(label='Power Rating', choices=[('🔌', '🔌'), ('🔌🔌', '🔌🔌️'), ('🔌🔌🔌', '🔌🔌🔌'), ('🔌🔌🔌🔌', '🔌🔌🔌🔌'), ('🔌🔌🔌🔌🔌', '🔌🔌🔌🔌🔌')  ])
 
     submit = SubmitField('Submit')
 
@@ -44,8 +44,9 @@ def add_cafe():
     # Exercise:
     # Make the form write a new row into cafe-data.csv
     # with   if form.validate_on_submit()
-    with open("cafe-data.csv", mode="a") as data:
-        data.write(f"{form.cafe.data},{form.location.data}, {form.open_time.data}, {form.close_time.data}, {form.coffee_rating.data}, {form.wifi_rating.data}, {form.power_rating.data}")
+    with open("cafe-data.csv", mode="a",  newline="") as data:
+        data.write(f"\n{form.cafe.data},{form.location.data}, {form.open_time.data}, {form.close_time.data}, {form.coffee_rating.data}, {form.wifi_rating.data}, {form.power_rating.data}")
+
 
     return render_template('add.html', form=form)
 
