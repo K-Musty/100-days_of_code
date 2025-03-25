@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
+import sqlite3
 app = Flask(__name__)
 
+db = sqlite3.connect("books-collections.db")
+cursor = db.cursor()
+cursor.execute(" CREATE TABLE books(id INTEGER PRIMARY KEY, title VARCHAR(255) NOT NULL UNIQUE, author VARCHAR(255), rating FLOAT NOT NULL) ")
 
 all_books = []
 
