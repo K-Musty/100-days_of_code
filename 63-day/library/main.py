@@ -1,6 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import DeclarativeBase
+
+class Base(DeclarativeBase):
+    pass
+
+db = SQLAlchemy(model_class=Base)
 app = Flask(__name__)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///new-books-collection.db"
+db.init_app(app)
 
 db = sqlite3.connect("books-collections.db")
 cursor = db.cursor()
