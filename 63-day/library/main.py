@@ -4,7 +4,11 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
 
 class Base(DeclarativeBase):
-    pass
+
+    id = ""
+    title = ""
+    author = ""
+    review = ""
 
 db = SQLAlchemy(model_class=Base)
 app = Flask(__name__)
