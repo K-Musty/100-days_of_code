@@ -1,23 +1,30 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase
 
-class Base(DeclarativeBase):
-
-    id = ""
-    title = ""
-    author = ""
-    review = ""
-
-db = SQLAlchemy(model_class=Base)
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///new-books-collection.db"
-db.init_app(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///new_books-collections.db"
 
-db = sqlite3.connect("books-collections.db")
-cursor = db.cursor()
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+class Books(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), unique=True, nullable=False)
+    author = db.Column(db.String(255), nullable=False)
+    rating = db.Column(db.Float, nullable=False)
+
+    def __repr__(self):
+        return f"<Book {self.title}>"
+
+
+db.create_all()
+
+#
+# db = sqlite3.connect("books-collections.db")
+# cursor = db.cursor()
 # cursor.execute(" CREATE TABLE books(id INTEGER PRIMARY KEY, title VARCHAR(255) NOT NULL UNIQUE, author VARCHAR(255), rating FLOAT NOT NULL) ")
 # cursor.execute("INSERT INTO books VALUES(1, 'Harry Potter', 'J. K. Rowling', '9.3')")
 # db.commit()
