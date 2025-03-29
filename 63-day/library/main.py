@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
 
@@ -24,9 +24,23 @@ with app.app_context():
     db.create_all()
 
     if not Book.query.get(1):
+        # CREATE NEW BOOK
         new_book = Book(id=1, title="Harry Potter", author="J.K. Rowling", rating=9.3)
         db.session.add(new_book)
         db.session.commit()
+
+    # READ ALL BOOKS
+    allbooks = db.session.query(Book).all()
+
+    # READ SPECIFIC BOOK
+    specific_book = Book.query.filter_by(title="Harry Potter").first()
+
+    # UPDATE A RECORD BY QUERY
+    book_to_update = Book.query.filter_by(title="Harry Potter").first()
+    book_to_update.title = "Harry Potter and the Chamber of Secrets"
+    db.session.commit()
+
+
 #
 # db = sqlite3.connect("books-collections.db")
 # cursor = db.cursor()
