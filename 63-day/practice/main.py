@@ -27,6 +27,31 @@ with app.app_context():
         db.session.add(new_user)
         db.session.commit()
 
+    # To read all users
+    all_users = db.session.query(User).all()
+    for user in all_users:
+        id = user.id
+        name = user.name
+        email = user.email
+        password = user.password
+
+    print(f"{id}, Name= {name}, Email= {email}, Password= {password}")
+
+    # Single User from table
+
+    user = User.query.first()
+    print("""
+    ┌───────────────────────────
+    │ USER #{}
+    ├───────────────────────────
+    │ Name:    {}
+    │ Email:   {}
+    └───────────────────────────
+    """.format(
+        user.id,
+        user.name,
+        user.email
+    ))
 
 if __name__ == "__main__":
     app.run()
