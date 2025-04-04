@@ -35,7 +35,7 @@ with app.app_context():
         email = user.email
         password = user.password
 
-    print(f"{id}, Name= {name}, Email= {email}, Password= {password}")
+        print(f"{id}, Name= {name}, Email= {email}, Password= {password}")
 
     # Single User from table
 
@@ -52,6 +52,21 @@ with app.app_context():
         user.name,
         user.email
     ))
+
+    # To read a specific user with id 3
+    user_3 = User.query.filter_by(id=3).first()
+    print(user_3.name)
+
+    # To edit user 4
+    update_user_4 = User.query.filter_by(id=4).first()
+    update_user_4.email = "new_email@email"
+    db.session.commit()
+
+
+    # To delete user
+    # user = User.query.filter_by(id=5).first()
+    # db.session.delete(user)
+    # db.session.commit()
 
 if __name__ == "__main__":
     app.run()
