@@ -23,22 +23,22 @@ class Book(db.Model):
 with app.app_context():
     db.create_all()
 
-    if not Book.query.get(1):
-        # CREATE NEW BOOK
-        new_book = Book(id=1, title="Harry Potter", author="J.K. Rowling", rating=9.3)
-        db.session.add(new_book)
-        db.session.commit()
+    # if not Book.query.get(1):
+    #     # CREATE NEW BOOK
+    #     new_book = Book(id=1, title="Harry Potter", author="J.K. Rowling", rating=9.3)
+    #     db.session.add(new_book)
+    #     db.session.commit()
 
     # READ ALL BOOKS
-    allbooks = db.session.query(Book).all()
+    # allbooks = db.session.query(Book).all()
 
     # READ SPECIFIC BOOK
-    specific_book = Book.query.filter_by(title="Harry Potter").first()
+    # specific_book = Book.query.filter_by(title="Harry Potter").first()
 
     # UPDATE A RECORD BY QUERY
-    book_to_update = Book.query.filter_by(title="Harry Potter").first()
-    book_to_update.title = "Harry Potter and the Chamber of Secrets"
-    db.session.commit()
+    # book_to_update = Book.query.filter_by(title="Harry Potter").first()
+    # book_to_update.title = "Harry Potter and the Chamber of Secrets"
+    # db.session.commit()
 
 
 #
@@ -60,12 +60,14 @@ def home():
 def add():
     if request.method == 'POST':
 
-        books_dict = {
-        'title': request.form['title'],
-        'author': request.form['author'],
-        'rating': request.form['rating']
-        }
-        all_books.append(books_dict)
+        new_book = Book(
+        title= request.form['title'],
+        author= request.form['author'],
+        rating= request.form['rating']
+        )
+        with app.app_context():
+            db.session.add(new_book)
+            db.session.commit()
 
         return redirect(url_for('home'))
 
