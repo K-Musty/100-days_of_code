@@ -49,10 +49,11 @@ with app.app_context():
 # db.commit()
 
 
-all_books = []
+# all_books = []
 
 @app.route('/')
 def home():
+    all_books = db.session.query(Book).all()
     return render_template("index.html", books=all_books)
 
 
