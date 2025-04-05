@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-import sqlite3
+# import sqlite3
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -87,6 +87,13 @@ def edit():
     selected_book = Book.query.get(book_id)
     return render_template("edit_rating.html", book=selected_book)
 
+@app.route("/delete", methods=['POST', 'GET'])
+def delete():
+    book_id = request.args.get('id')
+    book_to_delete = Book.query.get(book_id)
+    db.session.delete(book_to_delete)
+    db.session.commit()
+    return redirect(url_for('home'))
 
 
 if __name__ == "__main__":
