@@ -30,7 +30,7 @@ with app.app_context():
 class MyForm(FlaskForm):
     new_rating = StringField("Your Rating out of 10 e.g 7.5", [DataRequired()])
     new_review = StringField("Your Review", [DataRequired()])
-    submit = SubmitField()
+    submit = SubmitField("Done")
 
 
 @app.route("/")
@@ -39,9 +39,19 @@ def home():
     print(all_movies)
     return render_template("index.html", movies=all_movies)
 
-@app.route("/edit")
-def edit():
+@app.route("/edit", methods=['POST', 'GET'])
+def edit_rating():
     form = MyForm()
+    movie_id = request.args.get("id")
+    movie = Movies.query.get(movie_id)
+    if movie is None:
+        # Handle the case where the movie isn't found
+        return redirect(url_for('home'))
+    if form.validate_on_submit():
+        movie.rating = float(form.new_rating.data)
+        movie.review = form.new_review.data
+        db.session.commit()
+        return redirect(url_for('home'))
     return render_template("edit.html", form=form)
 
 if __name__ == '__main__':
