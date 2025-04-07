@@ -24,22 +24,14 @@ class Movies(db.Model):
     review = db.Column(db.String(300), nullable=False)
     img_url = db.Column(db.String(300), nullable=False)
 
-
 with app.app_context():
     db.create_all()
 
-    # new_movie = Movies(
-    #     title="Phone Booth",
-    #     year=2002,
-    #     description="Publicist Stuart Shepard finds himself trapped in a phone booth, pinned down by an extortionist's sniper rifle. Unable to leave or receive outside help, Stuart's negotiation with the caller leads to a jaw-dropping climax.",
-    #     rating=7.3,
-    #     ranking=10,
-    #     review="My favourite character was the caller.",
-    #     img_url="https://image.tmdb.org/t/p/w500/tjrX2oWRCM3Tvarz38zlZM7Uc10.jpg"
-    # )
-    #
-    # db.session.add(new_movie)
-    # db.session.commit()
+class MyForm(FlaskForm):
+    new_rating = StringField("Your Rating out of 10 e.g 7.5", [DataRequired()])
+    new_review = StringField("Your Review", [DataRequired()])
+    submit = SubmitField()
+
 
 @app.route("/")
 def home():
@@ -47,6 +39,10 @@ def home():
     print(all_movies)
     return render_template("index.html", movies=all_movies)
 
+@app.route("/edit")
+def edit():
+    form = MyForm()
+    return render_template("edit.html", form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
