@@ -54,5 +54,12 @@ def edit_rating():
         return redirect(url_for('home'))
     return render_template("edit.html", form=form)
 
+@app.route("/delete", methods=['POST', 'GET'])
+def delete():
+    movie_id = request.args.get("id")
+    movie = Movies.query.get(movie_id)
+    db.session.delete(movie)
+    db.session.commit()
+    return redirect(url_for('home'))
 if __name__ == '__main__':
     app.run(debug=True)
