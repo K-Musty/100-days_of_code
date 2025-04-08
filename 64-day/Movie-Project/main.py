@@ -32,6 +32,10 @@ class MyForm(FlaskForm):
     new_review = StringField("Your Review", [DataRequired()])
     submit = SubmitField("Done")
 
+class AddForm(FlaskForm):
+    movie_title = StringField("Movie Title")
+    submit = SubmitField("Add Movie")
+
 
 @app.route("/")
 def home():
@@ -61,5 +65,12 @@ def delete():
     db.session.delete(movie)
     db.session.commit()
     return redirect(url_for('home'))
+
+@app.route("/add", methods=['POST', 'GET'])
+def add():
+    form = AddForm()
+    return render_template("add.html", form=form)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
