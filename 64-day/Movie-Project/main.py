@@ -71,6 +71,10 @@ def add():
     form = AddForm()
     return render_template("add.html", form=form)
 
+@app.route("/select")
+def select():
+    return render_template("select.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
