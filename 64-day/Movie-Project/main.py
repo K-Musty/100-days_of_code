@@ -7,6 +7,13 @@ from wtforms.validators import DataRequired
 import requests
 
 API_KEY = ""
+url = "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1"
+
+headers = {"accept": "application/json"}
+
+response = requests.get(url, headers=headers)
+
+print(response.text)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
