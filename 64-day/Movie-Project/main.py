@@ -7,13 +7,8 @@ from wtforms.validators import DataRequired
 import requests
 
 API_KEY = ""
-url = "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1"
+MOVIE_URL = "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1"
 
-headers = {"accept": "application/json"}
-
-response = requests.get(url, headers=headers)
-
-print(response.text)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -76,8 +71,14 @@ def delete():
     return redirect(url_for('home'))
 
 @app.route("/add", methods=['POST', 'GET'])
-def add():
+def add_movie():
     form = AddForm()
+    if form.validate_on_submit():
+        movie_title = form.movie_title.data
+        response = requests.get(MOVIE_URL, params={"api_key": API_KEY, "query": movie_title})
+        data = response.json()["result"]
+        return render_template("select.html", options=data)
+
     return render_template("add.html", form=form)
 
 @app.route("/select")
