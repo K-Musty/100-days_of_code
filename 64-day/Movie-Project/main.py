@@ -31,6 +31,7 @@ class Movies(db.Model):
 with app.app_context():
     db.create_all()
 
+
 class MyForm(FlaskForm):
     new_rating = StringField("Your Rating out of 10 e.g 7.5", [DataRequired()])
     new_review = StringField("Your Review", [DataRequired()])
@@ -76,7 +77,7 @@ def add_movie():
     if form.validate_on_submit():
         movie_title = form.movie_title.data
         response = requests.get(MOVIE_URL, params={"api_key": API_KEY, "query": movie_title})
-        data = response.json()["result"]
+        data = response.json()["results"]
         return render_template("select.html", options=data)
 
     return render_template("add.html", form=form)
