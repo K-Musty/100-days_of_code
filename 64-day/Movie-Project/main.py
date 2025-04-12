@@ -8,6 +8,7 @@ import requests
 
 API_KEY = ""
 MOVIE_URL = "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1"
+MOVIE_DETAIL_URL = "https://api.themoviedb.org/3/movie/"
 
 
 app = Flask(__name__)
@@ -82,8 +83,23 @@ def add_movie():
 
     return render_template("add.html", form=form)
 
-@app.route("/select")
-def select():
+@app.route("/movie")
+def select_movie():
+    movie_api_id = request.args.get("id")
+    if movie_api_id:
+        movie_url = f"{MOVIE_DETAIL_URL}/{movie_api_id}"
+        response = requests.get(url=movie_url, params={"api_key": API_KEY, "language": "en-US"})
+        data = response.json
+
+        new_movie = Movies(
+            title = data["title"],
+            year = data["release_date"].split("-")[0],
+            img_url = f'{MOVIE_DETAIL_URL}/{data["poster_path"]}',
+            description = data['overview']
+        )
+        db.session.add(new_movie)
+        db.session.commit()
+        return redirect("home")
     return render_template("select.html")
 
 
