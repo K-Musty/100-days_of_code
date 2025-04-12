@@ -24,9 +24,9 @@ class Movies(db.Model):
     title = db.Column(db.String(250), nullable=False, unique=True)
     year = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(300), nullable=False)
-    rating = db.Column(db.Float, nullable=False)
-    ranking = db.Column(db.Integer, nullable=False)
-    review = db.Column(db.String(300), nullable=False)
+    rating = db.Column(db.Float, nullable=True)
+    ranking = db.Column(db.Integer, nullable=True)
+    review = db.Column(db.String(300), nullable=True)
     img_url = db.Column(db.String(300), nullable=False)
 
 with app.app_context():
@@ -91,16 +91,19 @@ def select_movie():
         movie_url = f"{MOVIE_DETAIL_URL}/{movie_api_id}"
         response = requests.get(url=movie_url, params={"api_key": API_KEY, "language": "en-US"})
         data = response.json()
-        print(data)
+        # print(data)
         new_movie = Movies(
             title = data["title"],
             year = data["release_date"].split("-")[0],
-            img_url = f'{MOVIE_DETAIL_URL}/{data["poster_path"]}',
-            description = data['overview']
+            img_url = f"https://image.tmdb.org/t/p/w500{data['poster_path']}",
+            description = data['overview'],
+            rating=0.0,  # Default rating (required field)
+            ranking=0,  # Default ranking (required field)
+            review="No review yet"
         )
         db.session.add(new_movie)
         db.session.commit()
-        return redirect(url_for("home"))
+        return redirect(url_for("edit_rating", id=new_movie.id))
     return render_template("select.html")
 
 
