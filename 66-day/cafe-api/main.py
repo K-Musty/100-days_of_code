@@ -24,11 +24,18 @@ class Cafe(db.Model):
     can_take_calls = db.Column(db.Boolean, nullable=False)
     coffee_price = db.Column(db.String(250), nullable=True)
 
+with app.run():
+    db.create_all()
+
 
 @app.route("/")
 def home():
     return render_template("index.html")
-    
+
+
+@app.route("/random", methods=['POST', 'GET'])
+def random_cafe():
+    pass
 
 ## HTTP GET - Read Record
 
