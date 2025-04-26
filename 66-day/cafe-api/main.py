@@ -53,7 +53,10 @@ def random_cafe():
 @app.route("/all")
 def all_cafe():
     cafes = db.session.query(Cafe).all()
-
+    # or return
+    # cafes = []
+    # for cafe in cafes:
+    #     cafes.append(cafe.to_dict())
     return jsonify(cafes=[cafe.to_dict() for cafe in cafes])
 
 ## HTTP GET - Read Record
