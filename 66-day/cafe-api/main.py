@@ -50,6 +50,12 @@ def random_cafe():
         "coffee_price": random_cafe.coffee_price,
     })
 
+@app.route("/all")
+def all_cafe():
+    cafes = db.session.query(Cafe).all()
+
+    return jsonify(cafes=[cafe.to_dict() for cafe in cafes])
+
 ## HTTP GET - Read Record
 
 ## HTTP POST - Create Record
