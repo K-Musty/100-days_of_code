@@ -79,6 +79,11 @@ def search_cafe():
         return jsonify(error={"Not Found": "Sorry, we don't have a cafe at that location."})
 
 
+@app.route("/add")
+def add_cafe():
+    pass
+
+
 ## HTTP GET - Read Record
 
 ## HTTP POST - Create Record
