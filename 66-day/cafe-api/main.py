@@ -81,7 +81,21 @@ def search_cafe():
 
 @app.route("/add", methods=["POST"])
 def post_new_cafe():
-    pass
+    new_cafe = Cafe(
+        name = request.form.get("name"),
+        map_url = request.form.get("map_url"),
+        img_url = request.form.get("img_url"),
+        location = request.form.get("location"),
+        seats = request.form.get("seats"),
+        has_toilet = request.form.get("has_toilet"),
+        has_wifi = request.form.get("has_wifi"),
+        has_sockets = request.form.get("has_sockets"),
+        can_take_calls = request.form.get("can_take_calls"),
+        coffee_price = request.form.get("coffee_price")
+    )
+    db.session.add(new_cafe)
+    db.session.commit()
+    return jsonify(response={"success": "Successfully added the new cafe."})
 
 
 ## HTTP GET - Read Record
