@@ -43,6 +43,8 @@ with app.app_context():
 def home():
     return render_template("index.html")
 
+
+## HTTP GET - Read Record
 @app.route("/random", methods=["GET"])
 def random_cafe():
     with app.app_context():
@@ -79,6 +81,7 @@ def search_cafe():
         return jsonify(error={"Not Found": "Sorry, we don't have a cafe at that location."})
 
 
+## HTTP POST - Create Record
 @app.route("/add", methods=["POST"])
 def post_new_cafe():
     new_cafe = Cafe(
@@ -96,11 +99,6 @@ def post_new_cafe():
     db.session.add(new_cafe)
     db.session.commit()
     return jsonify(response={"success": "Successfully added the new cafe."})
-
-
-## HTTP GET - Read Record
-
-## HTTP POST - Create Record
 
 ## HTTP PUT/PATCH - Update Record
 
