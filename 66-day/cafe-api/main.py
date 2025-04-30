@@ -79,8 +79,8 @@ def search_cafe():
         return jsonify(error={"Not Found": "Sorry, we don't have a cafe at that location."})
 
 
-@app.route("/add")
-def add_cafe():
+@app.route("/add", methods=["POST"])
+def post_new_cafe():
     pass
 
 
