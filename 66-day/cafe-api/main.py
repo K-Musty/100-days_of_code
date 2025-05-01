@@ -101,6 +101,9 @@ def post_new_cafe():
     return jsonify(response={"success": "Successfully added the new cafe."})
 
 ## HTTP PUT/PATCH - Update Record
+@app.route("/update-price/<cafe_id>")
+def update_cafe_price(cafe_id):
+    pass
 
 ## HTTP DELETE - Delete Record
 
