@@ -106,7 +106,9 @@ def update_cafe_price(cafe_id):
     pass
 
 ## HTTP DELETE - Delete Record
-
+@app.route("/delete")
+def delete_cafe():
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
