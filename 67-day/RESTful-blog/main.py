@@ -5,6 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, URL
 from flask_ckeditor import CKEditor, CKEditorField
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -63,6 +64,20 @@ def contact():
 @app.route("/new-post", methods=['GET', 'POST'])
 def make_post():
     create_form = CreatePostForm()
+    date_today = datetime.today()
+    if create_form.validate_on_submit() == True:
+        new_post = BlogPost(
+            title = create_form.title.data,
+            subtitle = create_form.subtitle.data,
+            date = date_today.strftime("%B %d, %Y"),
+            body = create_form.body.data,
+            author = create_form.author.data,
+            img_url = create_form.img_url.data
+        )
+
+        db.session.add(new_post)
+        db.session.commit()
+        return redirect(url_for('get_all_posts'))
     return render_template("make-post.html", form=create_form)
 
 
