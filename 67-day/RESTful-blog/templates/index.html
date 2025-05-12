@@ -31,7 +31,9 @@
           </a>
           <p class="post-meta">Posted by
             <a href="#">{{post.author}}</a>
-            on {{post.date}}</p>
+            on {{post.date}}
+          <a href="{{ url_for('remove_blog',  post_id=post.id) }}">✖</a></p>
+
         </div>
         <hr>
         {% endfor %}
