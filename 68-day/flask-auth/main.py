@@ -16,8 +16,9 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
-#Line below only required once, when creating DB. 
-# db.create_all()
+# Line below only required once, when creating DB.
+# with app.app_context():
+#     db.create_all()
 
 
 @app.route('/')
