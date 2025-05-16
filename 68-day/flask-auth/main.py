@@ -16,6 +16,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
+
 # Line below only required once, when creating DB.
 # with app.app_context():
 #     db.create_all()
@@ -26,8 +27,19 @@ def home():
     return render_template("index.html")
 
 
-@app.route('/register')
+@app.route('/register', methods=['POST', 'GET'])
 def register():
+    if request.method == 'POST':
+
+        new_user = User(
+            email=request.form.get('email'),
+            name=request.form.get('name'),
+            password=request.form.get('password')
+        )
+        db.session.add(new_user)
+        db.session.commit()
+
+        return redirect(url_for('secret'))
     return render_template("register.html")
 
 
