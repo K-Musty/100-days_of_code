@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-login_manager = LoginManager(app)
+login_manager = LoginManager()
 login_manager.init_app(app)
 
 ##CREATE TABLE IN DB
@@ -21,8 +21,8 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(1000))
 
 # Line below only required once, when creating DB.
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 
 @app.route('/')
@@ -58,12 +58,13 @@ def secrets():
 
 @app.route('/logout')
 def logout():
-    pass
+    logout_user()
+    return "You are now Logged out"
 
 
 @app.route('/download')
 def download():
-    return send_from_directory('static', filename='files/cheat_sheet.pdf')
+    return send_from_directory('static', path="files/cheat_sheet.pdf")
 
 
 if __name__ == "__main__":
