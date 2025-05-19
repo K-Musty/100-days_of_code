@@ -20,6 +20,11 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
 
+    def __init__(self, email, name, password):
+        self.email = email
+        self.name = name
+        self.password = password
+
 # Line below only required once, when creating DB.
 # with app.app_context():
 #     db.create_all()
@@ -33,6 +38,13 @@ def home():
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
+        email = request.form.get('email')
+
+
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            flash('Email already registered. Please login or use a different email.')
+            return redirect(url_for('login'))
 
         hash_and_salted_password = generate_password_hash(
             password=request.form.get('password'),
@@ -40,23 +52,43 @@ def register():
             method='pbkdf2:sha256'
         )
         new_user = User(
-            email=request.form.get('email'),
+            email=email,
             name=request.form.get('name'),
             password=hash_and_salted_password
         )
         db.session.add(new_user)
         db.session.commit()
 
-        return redirect(url_for('secret'))
+        # Log in the new user
+        login_user(new_user)
+
+        return redirect(url_for('secrets'))
     return render_template("register.html")
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(email=email).first()
+
+        if not user or not check_password_hash(user.password, password):
+            flash("Invalid email or password.")
+            return redirect(url_for('login'))
+
+        login_user(user)
+        return redirect(url_for('secrets'))
+
     return render_template("login.html")
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 @app.route('/secrets')
+@login_required
 def secrets():
     user_name = current_user.name
     return render_template("secrets.html", name=user_name)
