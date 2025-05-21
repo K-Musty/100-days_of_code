@@ -32,7 +32,7 @@ class User(UserMixin, db.Model):
 
 @app.route('/')
 def home():
-    return render_template("index.html")
+    return render_template("index.html", logged_in=current_user.is_authenticated)
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -63,7 +63,7 @@ def register():
         login_user(new_user)
 
         return redirect(url_for('secrets'))
-    return render_template("register.html")
+    return render_template("register.html", logged_in=current_user.is_authenticated)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -74,14 +74,17 @@ def login():
 
         user = User.query.filter_by(email=email).first()
 
-        if not user or not check_password_hash(user.password, password):
-            flash("Invalid email or password.")
+        if not user:
+            flash("That email does not exist, please try again.")
+            return redirect(url_for('login'))
+        elif  not check_password_hash(user.password, password):
+            flash('Password incorrect, please try again.')
             return redirect(url_for('login'))
 
         login_user(user)
         return redirect(url_for('secrets'))
 
-    return render_template("login.html")
+    return render_template("login.html", logged_in=current_user.is_authenticated)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -91,7 +94,7 @@ def load_user(user_id):
 @login_required
 def secrets():
     user_name = current_user.name
-    return render_template("secrets.html", name=user_name)
+    return render_template("secrets.html", name=user_name, logged_in=True)
 
 
 @app.route('/logout')
@@ -102,7 +105,7 @@ def logout():
 
 @app.route('/download')
 def download():
-    return send_from_directory('static', path="files/cheat_sheet.pdf")
+    return send_from_directory('static', path="files/cheat_sheet.pdf", )
 
 
 if __name__ == "__main__":
