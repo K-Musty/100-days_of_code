@@ -1,1 +1,1 @@
-# DAY 69 of 100 -- Blog Capstone
+# DAY 69 of 100 -- Blog Capstone Final
