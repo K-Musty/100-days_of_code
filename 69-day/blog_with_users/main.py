@@ -29,6 +29,14 @@ class Users(UserMixin, db.Model):
     email = db.Column(db.String(250), nullable=False, unique=True)
     password = db.Column(db.String(250), nullable=False)
 
+    def __init__(self, email, name, password):
+        self.name = name
+        self.email = email
+        self.password = password
+
+    with app.app_context():
+        db.create_all()
+
 class BlogPost(db.Model):
     __tablename__ = "blog_posts"
     id = db.Column(db.Integer, primary_key=True)
