@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-from forms import CreatePostForm
+from forms import CreatePostForm, RegisterForm
 from flask_gravatar import Gravatar
 
 app = Flask(__name__)
@@ -21,6 +21,13 @@ db = SQLAlchemy(app)
 
 
 ##CONFIGURE TABLES
+
+class Users(UserMixin, db.Model):
+    __users__ = "users"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(250), nullable=False)
+    email = db.Column(db.String(250), nullable=False, unique=True)
+    password = db.Column(db.String(250), nullable=False)
 
 class BlogPost(db.Model):
     __tablename__ = "blog_posts"
@@ -42,6 +49,25 @@ def get_all_posts():
 
 @app.route('/register')
 def register():
+    form = RegisterForm
+    if form.validate_on_submit():
+
+        hashed_and_salted = generate_password_hash(
+            form.password.data,
+            method = "ahfus:ofhsowsc43",
+            salt_length= 8
+        )
+
+        new_user = Users(
+            email = form.email.data,
+            name = form.name.data,
+            password = hashed_and_salted
+        )
+        db.session.add(new_user)
+        db.session.commit()
+
+        return redirect(url_for("get_all_posts"))
+
     return render_template("register.html")
 
 
