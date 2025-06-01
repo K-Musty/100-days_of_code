@@ -23,12 +23,14 @@ db = SQLAlchemy(app)
 ##CONFIGURE TABLES
 
 class Users(UserMixin, db.Model):
+
     __users__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
     email = db.Column(db.String(250), nullable=False, unique=True)
     password = db.Column(db.String(250), nullable=False)
 
+    # Define to avoid error
     def __init__(self, email, name, password):
         self.name = name
         self.email = email
