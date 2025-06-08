@@ -103,7 +103,13 @@ def login():
 
         user = Users.query.filter_by(email=email).first()
 
-        if user and check_password_hash(user.password, password):
+        if not user :
+            flash("This email does not exist, please try again")
+            return redirect(url_for('login'))
+        elif not check_password_hash(user.password, password):
+            flash("Password incorrect")
+            return redirect(url_for('login'))
+        else:
             login_user(user)
             return redirect(url_for('get_all_posts'))
     return render_template("login.html", form=form)
