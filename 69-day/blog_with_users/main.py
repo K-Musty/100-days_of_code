@@ -58,7 +58,7 @@ login_manager.init_app(app)
 def load_user(user_id):
     return Users.query.get(int(user_id))
 
-@login_required
+
 @app.route('/')
 def get_all_posts():
     posts = BlogPost.query.all()
@@ -104,10 +104,10 @@ def login():
         user = Users.query.filter_by(email=email).first()
 
         if not user :
-            flash("This email does not exist, please try again")
+            flash("This email does not exist, please try again", "error")
             return redirect(url_for('login'))
         elif not check_password_hash(user.password, password):
-            flash("Password incorrect")
+            flash("Password incorrect", "error")
             return redirect(url_for('login'))
         else:
             login_user(user)
@@ -117,6 +117,7 @@ def login():
 
 @app.route('/logout')
 def logout():
+    logout_user()
     return redirect(url_for('get_all_posts'))
 
 
@@ -131,6 +132,7 @@ def about():
     return render_template("about.html")
 
 
+@login_required
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
