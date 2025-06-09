@@ -18,7 +18,7 @@
       <change beforePath="$PROJECT_DIR$/../53-day/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../53-day/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_with_users/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_with_users/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_with_users/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_with_users/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_with_users/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_with_users/templates/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

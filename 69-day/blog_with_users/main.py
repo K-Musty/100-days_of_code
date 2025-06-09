@@ -132,7 +132,6 @@ def about():
     return render_template("about.html")
 
 
-@login_required
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
@@ -157,6 +156,7 @@ def add_new_post():
 
 
 @app.route("/edit-post/<int:post_id>")
+@login_required
 def edit_post(post_id):
     post = BlogPost.query.get(post_id)
     edit_form = CreatePostForm(
