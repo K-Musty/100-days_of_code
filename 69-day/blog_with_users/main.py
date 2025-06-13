@@ -26,13 +26,12 @@ db = SQLAlchemy(app)
 
 
 def admin_only(f):
-    wraps(f)
-    def decoreated_function(*args, **kwargs):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
         if not current_user.id == 1:
             return abort(403)
         return f(*args, **kwargs)
-    return decoreated_function
-
+    return decorated_function
 
 ##CONFIGURE TABLES
 
