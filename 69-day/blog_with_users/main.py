@@ -42,6 +42,8 @@ class Users(UserMixin, db.Model):
     name = db.Column(db.String(250), nullable=False)
     email = db.Column(db.String(250), nullable=False, unique=True)
     password = db.Column(db.String(250), nullable=False)
+    # To one relationship
+    posts = relationship("BlogPost", back_populates="author")
 
     # Define to avoid error
     def __init__(self, email, name, password):
@@ -55,7 +57,9 @@ class Users(UserMixin, db.Model):
 class BlogPost(db.Model):
     __tablename__ = "blog_posts"
     id = db.Column(db.Integer, primary_key=True)
-    author = db.Column(db.String(250), nullable=False)
+    # to many relationship
+    author_id  = db.Column(db.Integer, db.ForeignKey("users.id"))
+    author = relationship("Users", back_populates="posts")
     title = db.Column(db.String(250), unique=True, nullable=False)
     subtitle = db.Column(db.String(250), nullable=False)
     date = db.Column(db.String(250), nullable=False)
@@ -150,7 +154,7 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/new-post")
+@app.route("/new-post", methods=["GET", "POST"])
 @login_required
 @admin_only
 def add_new_post():
