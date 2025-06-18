@@ -44,6 +44,7 @@ class Users(UserMixin, db.Model):
     password = db.Column(db.String(250), nullable=False)
     # To one relationship
     posts = relationship("BlogPost", back_populates="author")
+    comments = relationship("Comment", back_populates="comment_author")
 
     # Define to avoid error
     def __init__(self, email, name, password):
@@ -60,11 +61,29 @@ class BlogPost(db.Model):
     # to many relationship
     author_id  = db.Column(db.Integer, db.ForeignKey("users.id"))
     author = relationship("Users", back_populates="posts")
+
+    # comments
+    comments = relationship("Comment", back_populates="parent_comment")
     title = db.Column(db.String(250), unique=True, nullable=False)
     subtitle = db.Column(db.String(250), nullable=False)
     date = db.Column(db.String(250), nullable=False)
     body = db.Column(db.Text, nullable=False)
     img_url = db.Column(db.String(250), nullable=False)
+
+with app.app_context():
+    db.create_all()
+
+class Comment(db.Model):
+    __tablename__ = "comments"
+    id = db.Column(db.Integer, primary_key=True)
+    # to many
+    author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    comment_author = relationship("Users", back_populates="posts")
+    # blog to many
+    post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id"))
+    parent_post = relationship("Blog_post", back_populates="comments")
+    text = db.Column(db.Text, nullable=False)
+
 
 with app.app_context():
     db.create_all()
