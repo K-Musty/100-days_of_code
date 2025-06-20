@@ -43,8 +43,8 @@
           {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
 
           <div class="col-lg-8 col-md-10 mx-auto comment">
-            {% for comment in post.comments: %}
               <ul class="commentList">
+                {% for comment in post.comments: %}
                 <li>
                     <div class="commenterImage">
                       <img src="https://pbs.twimg.com/profile_images/744849215675838464/IH0FNIXk.jpg"/>
@@ -55,8 +55,8 @@
                       <span class="date sub-text">{{comment.comment_author.name}}</span>
                     </div>
                 </li>
+                {% endfor %}
               </ul>
-            {% endfor %}
             </div>
 
 
