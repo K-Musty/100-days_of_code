@@ -5,7 +5,7 @@ from datetime import date
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
-from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
+from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user,
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from functools import wraps
 from flask import abort
@@ -52,8 +52,6 @@ class Users(UserMixin, db.Model):
         self.email = email
         self.password = password
 
-    with app.app_context():
-        db.create_all()
 
 class BlogPost(db.Model):
     __tablename__ = "blog_posts"
@@ -63,25 +61,23 @@ class BlogPost(db.Model):
     author = relationship("Users", back_populates="posts")
 
     # comments
-    comments = relationship("Comment", back_populates="parent_comment")
+    comments = relationship("Comment", back_populates="parent_post")
     title = db.Column(db.String(250), unique=True, nullable=False)
     subtitle = db.Column(db.String(250), nullable=False)
     date = db.Column(db.String(250), nullable=False)
     body = db.Column(db.Text, nullable=False)
     img_url = db.Column(db.String(250), nullable=False)
 
-with app.app_context():
-    db.create_all()
 
 class Comment(db.Model):
     __tablename__ = "comments"
     id = db.Column(db.Integer, primary_key=True)
     # to many
     author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    comment_author = relationship("Users", back_populates="posts")
+    comment_author = relationship("Users", back_populates="comments")
     # blog to many
     post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id"))
-    parent_post = relationship("Blog_post", back_populates="comments")
+    parent_post = relationship("BlogPost", back_populates="comments")
     text = db.Column(db.Text, nullable=False)
 
 
@@ -99,7 +95,16 @@ def load_user(user_id):
 @app.route('/')
 def get_all_posts():
     posts = BlogPost.query.all()
-    return render_template("index.html", all_posts=posts)
+    admin = False
+    try:
+        name = f"{current_user} for login"
+        if current_user.id == 1:
+            admin = True
+        logged_in = True
+    except:
+        name = "Anonymous for using"
+        logged_in = False
+    return render_template("index.html", all_posts=posts, admin=admin, name=name, logged_in=logged_in)
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -162,7 +167,20 @@ def logout():
 def show_post(post_id):
     form = CommentForm()
     requested_post = BlogPost.query.get(post_id)
-    return render_template("post.html", post=requested_post, form=form)
+    if form.validate_on_submit():
+        if not current_user.is_authenticated:
+            flash("You need to log in to comment")
+            return redirect(url_for("login"))
+
+        new_comment = Comment(
+            text = form.comment.data,
+            author = current_user,
+            parent_post = requested_post
+        )
+        db.session.add(new_comment)
+        db.session.commit()
+
+    return render_template("post.html", post=requested_post, form=form, current_user=current_user)
 
 
 @app.route("/about")
