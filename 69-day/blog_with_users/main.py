@@ -9,7 +9,7 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from functools import wraps
 from flask import abort
-# from flask_gravatar import Gravatar
+from flask_gravatar import Gravatar
 
 
 
@@ -18,6 +18,16 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap(app)
+
+# Gravatar
+gravatar = Gravatar(app,
+                    size=100,
+                    rating='g',
+                    default='retro',
+                    force_default=False,
+                    force_lower=False,
+                    use_ssl=False,
+                    base_url=None)
 
 ##CONNECT TO DB
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
@@ -180,7 +190,7 @@ def show_post(post_id):
         db.session.add(new_comment)
         db.session.commit()
 
-    return render_template("post.html", post=requested_post, form=form, current_user=current_user)
+    return render_template("post.html", post=requested_post, form=form, current_user=current_user, gravatar=gravatar)
 
 
 @app.route("/about")
