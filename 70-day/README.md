@@ -1,4 +1,4 @@
-# Day 70 of 100 - Day 70: Git, Github, and Version Control
+# Day 70 of 100 - Day 70: Git, Github, Version Control, Hosting blog on Heroku
 
 ## Challenges
 
