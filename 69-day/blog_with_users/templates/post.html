@@ -38,16 +38,14 @@
 
 <!--           Comments Area -->
 
-          {{ ckeditor.load() }}
-          {{ ckeditor.config(name='comment') }}
-          {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+
 
           <div class="col-lg-8 col-md-10 mx-auto comment">
               <ul class="commentList">
                 {% for comment in post.comments: %}
                 <li>
                     <div class="commenterImage">
-                      <img src="{{ comment.comment_author.email | gravatar }}"/>
+                      <img src="{{ comment.gravatar_url }}">
                     </div>
 
                     <div class="commentText">
@@ -58,7 +56,9 @@
                 {% endfor %}
               </ul>
             </div>
-
+          {{ ckeditor.load() }}
+          {{ ckeditor.config(name='comment') }}
+          {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
 
           </div>
       </div>

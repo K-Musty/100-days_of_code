@@ -9,7 +9,9 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from functools import wraps
 from flask import abort
-from flask_gravatar import Gravatar
+import hashlib
+from urllib.parse import urlencode
+# from flask_gravatar import Gravatar
 
 
 
@@ -19,20 +21,25 @@ app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
-# Gravatar
-gravatar = Gravatar(app,
-                    size=100,
-                    rating='g',
-                    default='retro',
-                    force_default=False,
-                    force_lower=False,
-                    use_ssl=False,
-                    base_url=None)
-
 ##CONNECT TO DB
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+# Gravatar
+
+def get_gravatar_url(email, size=100, default='retro', rating='g'):
+    # Clean and encode the email
+    email_clean = email.strip().lower()
+    # MD5 hash of the email
+    email_hash = hashlib.md5(email_clean.encode('utf-8')).hexdigest()
+
+    # Build query params
+    params = urlencode({'s': str(size), 'd': default, 'r': rating})
+
+    # Construct gravatar url
+    url = f"https://www.gravatar.com/avatar/{email_hash}?{params}"
+    return url
 
 
 def admin_only(f):
@@ -173,7 +180,7 @@ def logout():
     return redirect(url_for('get_all_posts'))
 
 
-@app.route("/post/<int:post_id>")
+@app.route("/post/<int:post_id>", methods=["GET", "POST"])
 def show_post(post_id):
     form = CommentForm()
     requested_post = BlogPost.query.get(post_id)
@@ -184,11 +191,16 @@ def show_post(post_id):
 
         new_comment = Comment(
             text = form.comment.data,
-            author = current_user,
+            comment_author = current_user,
             parent_post = requested_post
         )
         db.session.add(new_comment)
         db.session.commit()
+        return redirect(url_for("show_post", post_id=post_id))
+
+    gravatar = None
+    if current_user.is_authenticated:
+        gravatar = get_gravatar_url(current_user.email)
 
     return render_template("post.html", post=requested_post, form=form, current_user=current_user, gravatar=gravatar)
 
@@ -223,7 +235,7 @@ def add_new_post():
     return render_template("make-post.html", form=form)
 
 
-@app.route("/edit-post/<int:post_id>")
+@app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
 @login_required
 @admin_only
 def edit_post(post_id):
@@ -239,7 +251,6 @@ def edit_post(post_id):
         post.title = edit_form.title.data
         post.subtitle = edit_form.subtitle.data
         post.img_url = edit_form.img_url.data
-        post.author = edit_form.author.data
         post.body = edit_form.body.data
         db.session.commit()
         return redirect(url_for("show_post", post_id=post.id))
