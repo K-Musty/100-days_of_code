@@ -4,19 +4,15 @@
 
 - Topics: Summary of Git, Github, and Version Control 
 - Git Commands, Creating a Remote Repository, Creating Files (.gitignore), Branching, Merging, Cloning, Forking, Pull vs Push Requests
+-  Add a .gitignore file 
+- Use git to add version control to project
+- Use environment variables to store sensitive information
+- Set up a WSGI server with gunicorn
+- Push to remote on Github
+- Host on web service provider
+- Upgrade SQLite Database to PostgreSQL
 
-### Links
-
-- Solution URL: [Git, Github, and Version Control](https://github.com/Mikerniker/100_Days_of_Python/tree/main/Day70)
-- No exercise except for the Project folder to practice some of the commands.
-
-### References
-- [Github GitIgnore](github.com/gitHub/gitignore) a repository owned by the GitHub team for Git Ignore, which is a pre-made collection of useful git ignore templates.
-- [Beginner Friendly Repos](https://github.com/MunGell/awesome-for-beginners)
-- [Wordle Game Repo](https://github.com/ritik48/Wordle-Game)
-- [Git Exercises](https://learngitbranching.js.org/) Complete the challenges here to dive deeper into Git, including learning about Cherry-Picking, Git Rebase, and more. 
-
-### Notes
+### Commands
 Git Commands (Windows)
 - ```git status```
 - ```git init```
