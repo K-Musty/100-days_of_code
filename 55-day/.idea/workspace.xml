@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9346590-f247-4f07-9228-73d53b9f4ca6" name="Changes" comment="">
+    <list default="true" id="72ca1b5c-9c70-452b-b825-acc21a0af68f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../28-day/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../28-day/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../32-day/birthday-wisher/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../32-day/birthday-wisher/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../36-day/stock-news/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../36-day/stock-news/main.py" afterDir="false" />
@@ -15,6 +15,7 @@
       <change beforePath="$PROJECT_DIR$/../46-day/time-machine-playlist/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../46-day/time-machine-playlist/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../47-day/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../47-day/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../50-day/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../50-day/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../53-day/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../53-day/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,19 +26,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
+  &quot;associatedIndex&quot;: 2
 }</component>
-  <component name="ProjectId" id="2sSdd3gragsBwBikdo5YHR9QG4X" />
+  <component name="ProjectId" id="2t0aWJRzuwIJdGHzKU0CBoU6V2m" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Python.main.executor": "Run",
+    "Python.day-54-1-eample.executor": "Run",
+    "Python.day-54-1-exercise.executor": "Run",
+    "Python.server.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/kmusty/Desktop/practice/100-days_of_code/54-day"
+    "last_opened_file_path": "/home/kmusty/Desktop/practice/100-days_of_code/56-day"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -50,11 +54,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a9346590-f247-4f07-9228-73d53b9f4ca6" name="Changes" comment="" />
-      <created>1738452996244</created>
+      <changelist id="72ca1b5c-9c70-452b-b825-acc21a0af68f" name="Changes" comment="" />
+      <created>1739491477389</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1738452996244</updated>
+      <updated>1739491477389</updated>
     </task>
     <servers />
   </component>

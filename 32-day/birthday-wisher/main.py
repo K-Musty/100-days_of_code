@@ -28,11 +28,9 @@ data  = pandas.read_csv("birthdays.csv")
 
 
 # 2. Check if today matches a birthday in the birthdays.csv
-today_date = datetime.datetime
-today = today_date.now()
+today = datetime.datetime.now()
 day = today.day
 month = today.month
-year = today.year
 my_email = "johnnymont2255@gmail.com"
 password = "ayrghhhjgmcenzfh"
 
@@ -45,7 +43,7 @@ for (key, item) in data.iterrows():
         # 4. Send the letter generated in step 3 to that person's email address.
         with smtplib.SMTP_SSL("SMTP.gmail.com", 465) as connection:
             connection.login(user=my_email, password=password)
-            connection.sendmail(from_addr=my_email, to_addrs=item["email"], msg="Subject:Yane MuMu\n\n"
+            connection.sendmail(from_addr=my_email, to_addrs=item["email"], msg="Subject:Happy Birthday\n\n"
                                                                                 f"{final_letter}")
 
 

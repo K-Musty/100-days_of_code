@@ -12,8 +12,8 @@ driver = webdriver.Chrome(service=service)
 
 driver.get("https://tinder.com/")
 
-EMAIL = ""
-PASSWORD = ""
+EMAIL = "kmustapha559@gmail.com"
+PASSWORD = "07046989916kallikadi"
 
 accept = driver.find_element(By.CLASS_NAME, "lxn9zzn")
 accept.click()

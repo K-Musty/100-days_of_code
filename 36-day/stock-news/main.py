@@ -1,7 +1,12 @@
 import requests
 from twilio.rest import Client
 
-
+STOCK = "TSLA"
+COMPANY_NAME = "Tesla Inc"
+API_KEY = "8LN6VBH65SG4NIN6"
+NEWS_API_KEY = "c77006b0fbc145348a29d6627f0b134f"
+account_sid = "AC800c143a8a9fbe637dc1dabbbcc9a6ad"
+auth_token = "a2ca9b5a074f27afabba9f3f277b54cf"
 
 # STEP 1: Use https://www.alphavantage.co
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
@@ -57,11 +62,7 @@ else:
         to="+2349037256466"
     )
 
-
-
-
-
-#Optional: Format the SMS message like this: 
+#Optional: Format the SMS message like this:
 """
 TSLA: 🔺2%
 Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 

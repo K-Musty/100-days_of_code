@@ -21,7 +21,7 @@ response = requests.get(url=URL, headers=headers)
 
 soup = BeautifulSoup(response.text, "lxml")
 price = soup.find(name="span", class_="a-price-whole")
-price_value = float(price.getText().strip("$")[1])
+price_value = float(price.getText())
 
 print(price_value)
 if price_value < 100:

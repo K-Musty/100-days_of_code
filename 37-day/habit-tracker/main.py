@@ -1,7 +1,9 @@
 import requests
 from datetime import datetime
 
-
+TOKEN = "kalliubuntuggggh"
+USERNAME = "kmusty"
+pixela_endpoint = "https://pixe.la/v1/users"
 
 parameters = {
     "token": TOKEN,
