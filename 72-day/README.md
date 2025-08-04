@@ -1,5 +1,6 @@
 # DAY 72 of 100 - Data Visualisation with Matplotlib Programming Languages
 ---
+<img width="1402" height="1620" alt="programminglanguages" src="https://github.com/user-attachments/assets/aaf4a80a-3c92-469f-ac9c-3389c7be23c9" />
 
 ### Challenges
 - Get raw data and create some charts using Pandas and Matplotlib.
