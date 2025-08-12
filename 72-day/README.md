@@ -2,6 +2,7 @@
 ---
 
 
+
 ### Challenges
 - Get raw data and create some charts using Pandas and Matplotlib.
 - Analyze the the popularity of different programming languages over the years.
