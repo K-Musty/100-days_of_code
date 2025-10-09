@@ -1,1 +1,2 @@
-# DAY 75 of 100 - 75_Beautiful_Plotly_Charts_&_Analysing_the_Android_App_Store
+# DAY 75 of 100 - Beautiful Plotly Charts & Analysing the Android App Store
+------
